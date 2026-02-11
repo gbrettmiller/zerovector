@@ -10,7 +10,7 @@ function SiteLayout() {
   }, [pathname]);
 
   useEffect(() => {
-    document.body.style.background = '#000000';
+    document.body.style.background = '#181818';
     document.body.style.color = '#ffffff';
     document.body.style.margin = '0';
     document.body.style.minHeight = '100vh';
