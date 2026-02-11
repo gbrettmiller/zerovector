@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 import VectorField from '../components/VectorField';
@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import SectionHeader from '../components/SectionHeader';
 import DecryptText from '../components/DecryptText';
 import { ArrowIcon } from '../components/icons';
+import BootSequence from '../components/BootSequence';
 import en from '../content/en';
 
 function Animate({ children, className = '', delay = 0 }) {
@@ -21,10 +22,150 @@ function Animate({ children, className = '', delay = 0 }) {
   );
 }
 
+function ChevronIcon({ size = 20, className = '' }) {
+  return (
+    <svg
+      className={className}
+      width={size}
+      height={size}
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M6 8L10 12L14 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function PrincipleCard({ principle, open, onToggle }) {
+  return (
+    <div className={`zv-principle-card ${open ? 'zv-principle-card--open' : ''}`}>
+      <div className="zv-principle-card-header">
+        <div className="zv-principle-card-numeral">{principle.numeral}</div>
+        <PrincipleShare title={principle.title} body={principle.body} />
+      </div>
+      <h3>
+        <button
+          className="zv-principle-card-toggle"
+          onClick={onToggle}
+          aria-expanded={open}
+        >
+          <span className="zv-principle-card-title">{principle.title}</span>
+          <ChevronIcon
+            size={20}
+            className={`zv-principle-card-chevron ${open ? 'zv-principle-card-chevron--open' : ''}`}
+          />
+        </button>
+      </h3>
+      <p className="zv-principle-card-body">{principle.body}</p>
+      {principle.detail && (
+        <div className={`zv-principle-card-detail ${open ? 'zv-principle-card-detail--open' : ''}`}>
+          <div className="zv-principle-card-detail-inner">
+            <div className="zv-principle-card-detail-content">
+              {principle.detail.text.map((paragraph, i) => (
+                <p key={i} className="zv-principle-card-detail-text">{paragraph}</p>
+              ))}
+              {principle.detail.links?.length > 0 && (
+                <div className="zv-principle-card-detail-links">
+                  {principle.detail.links.map((link, i) => (
+                    <a key={i} href={link.url} target="_blank" rel="noopener noreferrer">
+                      {link.label} <ArrowIcon size={12} />
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function PrincipleShare({ title, body }) {
+  const [open, setOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [open]);
+
+  const fullText = `"${title}"\n\n${body}\n\n— Zero-Vector Design\nzerovector.design`;
+
+  const copyText = async () => {
+    try {
+      await navigator.clipboard.writeText(fullText);
+      setCopied(true);
+      setOpen(false);
+      setTimeout(() => setCopied(false), 2000);
+    } catch { /* clipboard unavailable */ }
+  };
+
+  const shareX = () => {
+    const text = encodeURIComponent(`"${title}"\n\n— Zero-Vector Design\nzerovector.design`);
+    window.open(`https://x.com/intent/tweet?text=${text}`, '_blank');
+    setOpen(false);
+  };
+
+  const shareLinkedIn = () => {
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://zerovector.design')}`, '_blank');
+    setOpen(false);
+  };
+
+  return (
+    <div className="zv-principle-share" ref={ref}>
+      <button
+        className={`zv-principle-share-trigger ${copied ? 'zv-principle-share-copied' : ''}`}
+        onClick={() => setOpen(!open)}
+        aria-label="Share this principle"
+      >
+        {copied ? 'Copied' : 'Share'}
+      </button>
+      {open && (
+        <div className="zv-principle-share-menu">
+          <button onClick={copyText}>Copy text</button>
+          <button onClick={shareX}>Post to X</button>
+          <button onClick={shareLinkedIn}>Share on LinkedIn</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 const { home } = en;
 
 function ManifestoPage() {
+  const [booted, setBooted] = useState(() => {
+    try { return !!sessionStorage.getItem('zv-booted'); } catch { return false; }
+  });
   const [heroPhase, setHeroPhase] = useState(0); // 0=start, 1=eyebrow done, 2=title done
+  const [openPrinciples, setOpenPrinciples] = useState(new Set());
+  const allPrinciplesOpen = openPrinciples.size === home.principles.items.length;
+
+  const toggleAllPrinciples = () => {
+    if (allPrinciplesOpen) {
+      setOpenPrinciples(new Set());
+    } else {
+      setOpenPrinciples(new Set(home.principles.items.map((_, i) => i)));
+    }
+  };
+
+  const togglePrinciple = (index) => {
+    setOpenPrinciples(prev => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  };
 
   useEffect(() => {
     document.title = 'Zero-Vector Design';
@@ -32,6 +173,7 @@ function ManifestoPage() {
 
   return (
     <div className="zv-manifesto">
+      <BootSequence onComplete={() => setBooted(true)} />
       <VectorField />
       <Nav />
 
@@ -44,6 +186,7 @@ function ManifestoPage() {
           <div className="zv-section-number">
             <DecryptText
               text={home.hero.pre}
+              ready={booted}
               delay={200}
               blinks={2}
               blinkSpeed={130}
@@ -69,7 +212,7 @@ function ManifestoPage() {
       </section>
 
       {/* 002 — Declaration */}
-      <section className="zv-section">
+      <section className="zv-section zv-section--declaration">
         <div className="zv-container">
           <Animate>
             <SectionHeader number={home.declaration.number} title={home.declaration.title} />
@@ -89,7 +232,7 @@ function ManifestoPage() {
       </section>
 
       {/* 003 — Timeline */}
-      <section className="zv-section">
+      <section className="zv-section zv-section--timeline">
         <div className="zv-container">
           <Animate>
             <SectionHeader number={home.timeline.number} title={home.timeline.title} subtitle={home.timeline.subtitle} />
@@ -109,7 +252,7 @@ function ManifestoPage() {
       </section>
 
       {/* Pipeline */}
-      <section className="zv-section">
+      <section className="zv-section zv-section--pipeline">
         <div className="zv-container">
           <Animate>
             <h2 className="zv-section-title">{home.pipeline.title}</h2>
@@ -136,21 +279,27 @@ function ManifestoPage() {
       </section>
 
       {/* 004 — The Seven Principles */}
-      <section className="zv-section">
+      <section className="zv-section zv-section--principles">
         <div className="zv-container">
           <Animate>
-            <SectionHeader number={home.principles.number} title={home.principles.title} />
+            <div className="zv-principles-header">
+              <SectionHeader number={home.principles.number} title={home.principles.title} />
+              <button
+                className="zv-principles-expand-toggle"
+                onClick={toggleAllPrinciples}
+              >
+                {allPrinciplesOpen ? 'Collapse all' : 'Expand all'}
+              </button>
+            </div>
           </Animate>
-          <div className="zv-seven-principles">
+          <div className="zv-principles-grid">
             {home.principles.items.map((p, i) => (
               <Animate key={i}>
-                <div className="zv-seven-principle">
-                  <div className="zv-seven-principle-numeral">{p.numeral}</div>
-                  <div className="zv-seven-principle-content">
-                    <h3 className="zv-seven-principle-title">{p.title}</h3>
-                    <p className="zv-seven-principle-body">{p.body}</p>
-                  </div>
-                </div>
+                <PrincipleCard
+                  principle={p}
+                  open={openPrinciples.has(i)}
+                  onToggle={() => togglePrinciple(i)}
+                />
               </Animate>
             ))}
           </div>
@@ -158,7 +307,7 @@ function ManifestoPage() {
       </section>
 
       {/* 005 — What This Is Not. What This Is. */}
-      <section className="zv-section">
+      <section className="zv-section zv-section--contrasts">
         <div className="zv-container">
           <Animate>
             <SectionHeader number={home.contrasts.number} title={home.contrasts.title} />
@@ -185,7 +334,7 @@ function ManifestoPage() {
       </section>
 
       {/* 006 — Mark III */}
-      <section className="zv-section">
+      <section className="zv-section zv-section--markiii">
         <div className="zv-container">
           <Animate>
             <SectionHeader number={home.markiii.number} title={home.markiii.title} />
@@ -209,7 +358,7 @@ function ManifestoPage() {
       </section>
 
       {/* 007 — Closing */}
-      <section className="zv-section zv-closing">
+      <section className="zv-section zv-section--closing zv-closing">
         <div className="zv-container">
           <Animate>
             <SectionHeader number={home.closing.number} title={home.closing.headline} />
@@ -224,7 +373,7 @@ function ManifestoPage() {
       </section>
 
       {/* Two Paths CTA */}
-      <section className="zv-section">
+      <section className="zv-section zv-section--paths">
         <div className="zv-container">
           <div className="zv-paths">
             <Animate>

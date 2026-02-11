@@ -102,6 +102,27 @@ function OriginPage() {
         </div>
       </section>
 
+      {/* The Crew */}
+      <section className="zv-section">
+        <div className="zv-container">
+          <Animate>
+            <h2 className="zv-section-title">{origin.crew.title}</h2>
+            <p className="zv-section-subtitle">{origin.crew.subtitle}</p>
+          </Animate>
+          <div className="zv-crew-grid" style={{ marginTop: 48 }}>
+            {origin.crew.members.map((member, i) => (
+              <Animate key={i}>
+                <div className="zv-crew-card">
+                  <div className="zv-crew-card-name">{member.name}</div>
+                  <div className="zv-crew-card-role">{member.role}</div>
+                  <div className="zv-crew-card-desc">{member.desc}</div>
+                </div>
+              </Animate>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="zv-section">
         <div className="zv-container">

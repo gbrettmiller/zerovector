@@ -13,7 +13,7 @@ const en = {
       pre: 'A New Discipline',
       title: 'ZERO VECTOR',
       subtitle: 'No intermediary. No translation layer. No friction. From intent to artifact, directly.',
-      coordinates: '47.3812 N / 122.3320 W',
+      coordinates: '44.8024 N / 68.7853 W',
     },
 
     declaration: {
@@ -70,36 +70,102 @@ const en = {
           numeral: 'I',
           title: 'Work in the Medium.',
           body: 'A chef does not draw a picture of a meal. A sculptor does not write a song about a statue. Do not abstract yourself away from the thing you are actually making. Hands on the rock. No gloves.',
+          detail: {
+            text: [
+              'When you design in Figma, you are working in a representation — a picture of the thing, not the thing itself. When you design in the actual medium with AI agents, you are working in the real material. The feedback is immediate. The constraints are real, not simulated. The discoveries you make are about the actual artifact.',
+              'This is the difference between a sculptor working in clay and a sculptor working from a blueprint. One learns from the material. The other learns from an abstraction of it. Work in the medium means: touch the real thing. Every day. From the beginning.',
+            ],
+            links: [
+              { label: 'The 20 Rules for AI-First Design', url: 'https://eflowers.substack.com/p/the-20-rules-for-ai-first-design' },
+              { label: 'A Good Craftsperson Never Blames Their Tools', url: 'https://eflowers.substack.com/p/a-good-craftsperson-never-blames-their-tools' },
+            ],
+          },
         },
         {
           numeral: 'II',
           title: 'Boundaryless by Nature.',
           body: 'Zero-Vector is not web design leveled up. It is not graphic design with AI. It prescribes no tool, no discipline, no lane. It is the process of having an idea and making it real. Take all from that which is around you and make of it something more.',
+          detail: {
+            text: [
+              'Zero-Vector does not live inside "design" or "engineering" or "research." It is the practice of collapsing all of these into a single intentional flow. The practitioner does not ask "am I designing or building?" — the question is irrelevant. You are making.',
+              'The boundaries between disciplines were always artificial, created by tool limitations and organizational charts. When one person with AI agents can research, ideate, design, build, test, and ship — the boundaries dissolve. Not because the skills stop mattering, but because they stop being separate activities.',
+            ],
+            links: [
+              { label: 'Across the Designer-Verse', url: 'https://eflowers.substack.com/p/across-the-designer-verse' },
+            ],
+          },
         },
         {
           numeral: 'III',
           title: 'The Medium is the Message.',
           body: 'McLuhan told us the medium shapes the meaning. When your medium was Figma, your thinking was shaped by frames and layers. When your medium is the artifact itself, your thinking is shaped by what the artifact does. Change the medium, change the mind.',
+          detail: {
+            text: [
+              'Marshall McLuhan wrote that the medium through which we receive information shapes how we process it. Television didn\'t just deliver content — it changed how we think. The same is true for design tools. Figma taught us to think in frames, layers, and components. It was a thinking tool disguised as a drawing tool.',
+              'When your medium becomes the artifact itself — working code, real interactions, real data — your thinking shifts. You stop asking "what does this look like?" and start asking "what does this do? How does it feel? What happens when?" The questions change. And when the questions change, the answers get dramatically better.',
+            ],
+            links: [
+              { label: 'Understanding Media — Marshall McLuhan', url: 'https://www.amazon.com/Understanding-Media-Extensions-Marshall-McLuhan/dp/0262631598' },
+            ],
+          },
         },
         {
           numeral: 'IV',
           title: 'The Purpose of a System is What It Does.',
           body: 'Stafford Beer\'s law, applied. The purpose of the old process was to create simulacrums. Imposters of the real thing. We had imposter syndrome because our job was literally to create imposters. The purpose of Zero-Vector design is what it does: it makes the real thing. Role distinction fades. Intention distinction takes its place.',
+          detail: {
+            text: [
+              'POSIWID — the Purpose Of a System Is What It Does — is Stafford Beer\'s razor for cutting through organizational self-deception. Don\'t look at what a system claims to do. Look at what it actually produces.',
+              'The traditional design-to-engineering pipeline claims to produce faithful implementations of design intent. What it actually produces is compromise. Redline specs that get "interpreted." Sprint reviews where the designer thinks "that is not what I meant." The system\'s purpose was never fidelity. It was translation. And translation always loses signal. Zero-Vector eliminates the translation. The system\'s purpose becomes: make the thing.',
+            ],
+            links: [
+              { label: 'Thinking in Systems — Donella Meadows', url: 'https://www.amazon.com/Thinking-Systems-Donella-H-Meadows/dp/1603580557' },
+            ],
+          },
         },
         {
           numeral: 'V',
           title: 'Design and Build are the Same Act.',
           body: 'Not measure twice, cut once. Measure and cut simultaneously. The old way built an entire edifice of pixel-perfect graphic art only to hand it off and watch half the fidelity evaporate. Zero-Vector collapses the gap. The design is the build. The build is the design. There is no handoff because there is no separation.',
+          detail: {
+            text: [
+              'The handoff is the original sin of modern product development. A designer creates a detailed specification — a picture of the thing — and passes it to an engineer who interprets that picture into code. Information is lost at every step. Intent gets diluted. The designer\'s taste and micro-decisions — the things that separate adequate from extraordinary — cannot survive translation.',
+              'In Zero-Vector, there is no handoff because the designer is building. The taste is embedded directly in the artifact. Every decision, from the architecture to the 1px shadow, comes from the person who holds the vision. The build IS the design act.',
+            ],
+            links: [
+              { label: 'The 20 Rules for AI-First Design', url: 'https://eflowers.substack.com/p/the-20-rules-for-ai-first-design' },
+              { label: 'Out of the Crisis — W. Edwards Deming', url: 'https://www.amazon.com/Out-Crisis-W-Edwards-Deming/dp/0262541157' },
+            ],
+          },
         },
         {
           numeral: 'VI',
           title: 'Dissolve the Hyperspecialization.',
           body: 'Specialization is for insects. The Zero-Vector practitioner researches, synthesizes, ideates, prototypes, validates, and ships. Not because they are superhuman. Because the tools no longer require ten specialists to do what one intentional person can direct. Your role is not Designer or Developer or Researcher. Your role is Auteur.',
+          detail: {
+            text: [
+              '"A human being should be able to change a diaper, plan an invasion, butcher a hog, conn a ship, design a building, write a sonnet, balance accounts, build a wall, set a bone, comfort the dying, take orders, give orders, cooperate, act alone, solve equations, analyze a new problem, pitch manure, program a computer, cook a tasty meal, fight efficiently, die gallantly. Specialization is for insects." — Robert A. Heinlein',
+              'The modern product team is a colony of insects. UX researcher. Interaction designer. Visual designer. Frontend engineer. Backend engineer. QA. DevOps. Each specialist touching one facet of the same gem. Zero-Vector doesn\'t eliminate expertise — it eliminates the walls between experts. One person with deep knowledge and AI agents can traverse the entire pipeline. Not because they know everything, but because the agents fill the gaps.',
+            ],
+            links: [
+              { label: 'Across the Designer-Verse', url: 'https://eflowers.substack.com/p/across-the-designer-verse' },
+              { label: 'Out of the Crisis: Convergent Evolution', url: 'https://eflowers.substack.com/p/out-of-the-crisis' },
+            ],
+          },
         },
         {
           numeral: 'VII',
           title: 'Venture Past the Possible.',
           body: 'Clarke said the only way to discover the limits of the possible is to venture a little way past them into the impossible. Zero-Vector design lives in that margin. When someone says you cannot do that, the answer is: wanna bet?',
+          detail: {
+            text: [
+              'Arthur C. Clarke\'s Second Law: "The only way of discovering the limits of the possible is to venture a little way past them into the impossible." Every Zero-Vector practitioner lives in that margin.',
+              'When someone says "a designer can\'t build a production application," the answer is: watch. When someone says "you can\'t replace a team of ten with one person and AI agents," the answer is: we already did. This is not arrogance. It is evidence. The impossible keeps getting redefined, and the people who accept the old definition are the ones who get left behind.',
+            ],
+            links: [
+              { label: 'Out of the Crisis: Convergent Evolution', url: 'https://eflowers.substack.com/p/out-of-the-crisis' },
+            ],
+          },
         },
       ],
     },
@@ -527,6 +593,24 @@ const en = {
     author: {
       title: 'The Author',
       body: 'Erika is also a published science fiction author. The Dauntless Gambit series — over 400,000 words of space opera — is where the crew that builds Zero-Vector gets their names. Julian, Siddig, Decker, Lee, Sellivan, Qin. They were characters first. Now they are agents. The fiction became the framework.',
+    },
+
+    crew: {
+      title: 'The Crew',
+      subtitle: 'Named for the characters of The Dauntless Gambit. Built as AI agents in Claude Code. They are not assistants. They are crew.',
+      members: [
+        { name: 'Julian', role: 'Orchestrator', desc: 'Strategy, planning, and cross-agent coordination. The analytical mind seeing the whole board.' },
+        { name: 'Siddig', role: 'Backend Engineer', desc: 'API, database, RAG pipeline, and data integrity. Every query returns the right answer.' },
+        { name: 'Heavy', role: 'Frontend Engineer', desc: 'UI components, styling, and interactions. The gentle force behind everything you touch.' },
+        { name: 'Decker', role: 'Prose IDE Engineer', desc: 'Story structure, scene management, and the sacred writing space. Captain of the codebase.' },
+        { name: 'Lee', role: 'Public Affairs', desc: 'Website, marketing, demos, and brand voice. The charming face presented to the world.' },
+        { name: 'Sellivan', role: 'Operations Lead', desc: 'Repository structure, documentation, and process discipline. Precise, cynical, always right.' },
+        { name: 'Qin', role: 'Code Auditor', desc: 'Architecture assessment, technical debt, and quality review. She notices everything.' },
+        { name: 'Manu', role: 'Rapid Response', desc: 'Hotfixes, performance optimization, and prototyping. Questions everything, ships fast.' },
+        { name: 'Eliza', role: 'Combat Specialist', desc: 'Complex debugging, security review, and the problems nobody else can crack.' },
+        { name: 'Adoni', role: 'Ghostwriter', desc: 'Articles, marketing copy, and channeling the auteur\'s voice. Theatrical, gracious, precise.' },
+        { name: 'Renic', role: 'Black Hat', desc: 'Adversarial review, vulnerability testing, and stress analysis. Cold, calculating, necessary.' },
+      ],
     },
 
     cta: {

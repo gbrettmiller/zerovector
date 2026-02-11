@@ -11,7 +11,7 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
-    port: 3006,
+    port: 5173,
   },
   resolve: {
     alias: {

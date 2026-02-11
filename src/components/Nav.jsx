@@ -10,6 +10,8 @@ const navLinks = [
   { to: '/reading', label: 'Reading' },
   { to: '/origin', label: 'The Origin' },
   { to: '/open', label: 'Open Vector' },
+  { to: '/ask', label: 'Ask' },
+  { to: '/quiz', label: 'Quiz' },
 ];
 
 function Nav() {

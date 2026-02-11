@@ -95,6 +95,1011 @@ a:hover {
   position: relative;
 }
 
+/* ============================================
+   Section Visual Treatments
+   Non-repeating visual narrative — each section
+   is its own statement. Builds, peaks, resolves.
+   ============================================ */
+
+/* --- 002 Declaration: The First Breath --- */
+.zv-section--declaration {
+  background: linear-gradient(
+    120deg,
+    rgba(0, 255, 255, 0.035) 0%,
+    transparent 60%
+  );
+}
+
+.zv-section--declaration .zv-container {
+  border-left: 3px solid rgba(0, 255, 255, 0.3);
+  padding-left: calc(var(--container-padding) + 32px);
+}
+
+.zv-section--declaration .zv-callout {
+  background: #ffffff;
+  color: #0a0a0a;
+  padding: 28px 36px;
+  border-left: 4px solid var(--cyan);
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+}
+
+/* --- 003 Timeline: The Dark Corridor --- */
+.zv-section--timeline {
+  background: #0d0d14;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* --- Pipeline: The Confrontation (Inverted) --- */
+.zv-section--pipeline {
+  position: relative;
+  border-top: 3px solid var(--cyan);
+  background: #ffffff;
+}
+
+.zv-section--pipeline > .zv-container {
+  position: relative;
+  z-index: 1;
+}
+
+.zv-section--pipeline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.zv-section--pipeline .zv-section-title {
+  color: #0a0a0a;
+}
+
+.zv-section--pipeline .zv-section-subtitle {
+  color: #555;
+}
+
+.zv-section--pipeline .zv-pipeline-label {
+  color: #0a0a0a;
+}
+
+.zv-section--pipeline .zv-pipeline-tag-old {
+  color: var(--magenta);
+}
+
+.zv-section--pipeline .zv-pipeline-tag-new {
+  color: #007a7a;
+}
+
+.zv-section--pipeline .zv-pipeline-old {
+  color: var(--magenta);
+  opacity: 0.7;
+}
+
+.zv-section--pipeline .zv-pipeline-new {
+  color: #0a0a0a;
+}
+
+/* --- 004 Principles: The Commandments --- */
+.zv-section--principles {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+    #0e0e16;
+}
+
+.zv-section--principles::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--cyan), var(--cyan-dim) 30%, transparent 70%);
+}
+
+/* --- Principles Header + Expand/Collapse --- */
+.zv-principles-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.zv-principles-header .zv-section-header {
+  flex: 1;
+}
+
+.zv-principles-expand-toggle {
+  flex-shrink: 0;
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+  white-space: nowrap;
+  margin-top: 4px;
+}
+
+.zv-principles-expand-toggle:hover {
+  color: var(--cyan);
+  border-color: rgba(0, 255, 255, 0.2);
+}
+
+/* --- Principle Cards --- */
+.zv-principles-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.zv-principle-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-left: 3px solid rgba(0, 255, 255, 0.15);
+  padding: 40px 48px;
+  transition: border-left-color 0.8s var(--ease-out), box-shadow 0.8s var(--ease-out), background 0.3s var(--ease-out);
+}
+
+.zv-animate.zv-visible .zv-principle-card {
+  border-left-color: rgba(0, 255, 255, 0.4);
+  box-shadow: inset 4px 0 30px -12px rgba(0, 255, 255, 0.08);
+}
+
+.zv-principle-card:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.zv-principle-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.zv-principle-card-numeral {
+  font-family: var(--font-mono);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--cyan);
+  line-height: 1;
+  text-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
+}
+
+.zv-principle-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.zv-principle-card-body {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 720px;
+}
+
+/* --- Principle Disclosure Toggle --- */
+.zv-principle-card-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 12px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.zv-principle-card-toggle .zv-principle-card-title {
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.zv-principle-card-chevron {
+  flex-shrink: 0;
+  color: var(--text-tertiary);
+  transition: transform 0.4s var(--ease-out), color 0.4s var(--ease-out);
+}
+
+.zv-principle-card-chevron--open {
+  transform: rotate(180deg);
+  color: var(--cyan);
+}
+
+.zv-principle-card-toggle:hover .zv-principle-card-chevron {
+  color: var(--cyan);
+}
+
+/* --- Principle Detail Disclosure --- */
+.zv-principle-card-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s var(--ease-out);
+}
+
+.zv-principle-card-detail--open {
+  grid-template-rows: 1fr;
+}
+
+.zv-principle-card-detail-inner {
+  overflow: hidden;
+}
+
+.zv-principle-card-detail-content {
+  margin-top: 24px;
+  margin-left: 24px;
+  padding: 28px 32px;
+  background: #ffffff;
+  border-left: 3px solid var(--cyan);
+}
+
+.zv-principle-card-detail-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.8;
+  max-width: 720px;
+}
+
+.zv-principle-card-detail-text + .zv-principle-card-detail-text {
+  margin-top: 16px;
+}
+
+.zv-principle-card-detail-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.zv-principle-card-detail-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: #007a7a;
+  text-decoration: none;
+  padding: 8px 14px;
+  border: 1px solid rgba(0, 122, 122, 0.2);
+  transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out), color 0.3s var(--ease-out);
+}
+
+.zv-principle-card-detail-links a:hover {
+  border-color: rgba(0, 122, 122, 0.5);
+  background: rgba(0, 122, 122, 0.06);
+  color: #005a5a;
+  text-shadow: none;
+}
+
+/* --- Principle Share Button --- */
+.zv-principle-share {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.zv-principle-share-trigger {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: 6px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+  white-space: nowrap;
+}
+
+.zv-principle-share-trigger:hover {
+  color: var(--cyan);
+  border-color: rgba(0, 255, 255, 0.2);
+}
+
+.zv-principle-share-copied {
+  color: var(--cyan);
+  border-color: rgba(0, 255, 255, 0.2);
+}
+
+.zv-principle-share-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: #0a0a12;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  z-index: 10;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.zv-principle-share-menu button {
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  padding: 12px 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.zv-principle-share-menu button:last-child {
+  border-bottom: none;
+}
+
+.zv-principle-share-menu button:hover {
+  background: rgba(0, 255, 255, 0.06);
+  color: var(--cyan);
+}
+
+/* --- 005 Contrasts: The Battleground (Peak) --- */
+.zv-section--contrasts {
+  position: relative;
+  background: #08080e;
+}
+
+.zv-section--contrasts::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    var(--magenta),
+    transparent 40%,
+    transparent 60%,
+    var(--cyan)
+  );
+}
+
+.zv-section--contrasts .zv-contrast-pair {
+  border-color: rgba(255, 255, 255, 0.08);
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+}
+
+.zv-section--contrasts .zv-contrast-not {
+  padding: 32px;
+}
+
+.zv-section--contrasts .zv-contrast-is {
+  background: #ffffff;
+  padding: 32px;
+}
+
+.zv-section--contrasts .zv-contrast-is .zv-contrast-label {
+  color: #007a7a;
+}
+
+.zv-section--contrasts .zv-contrast-is .zv-contrast-title {
+  color: #0a0a0a;
+}
+
+.zv-section--contrasts .zv-contrast-is .zv-contrast-body {
+  color: #444;
+}
+
+/* --- 006 Mark III: The Ascent --- */
+.zv-section--markiii {
+  background: linear-gradient(
+    to bottom,
+    #0c0c14 0%,
+    var(--void) 70%
+  );
+  border-top: 1px solid var(--void-border);
+}
+
+/* --- 007 Closing: The Directive (Inverted) --- */
+.zv-section--closing {
+  background: #ffffff;
+  padding-top: calc(var(--section-padding) + 40px);
+}
+
+.zv-section--closing .zv-container {
+  max-width: 800px;
+  text-align: center;
+}
+
+.zv-section--closing .zv-section-number {
+  color: #007a7a;
+}
+
+.zv-section--closing .zv-section-title {
+  color: #0a0a0a;
+}
+
+.zv-section--closing .zv-body-text {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333;
+}
+
+.zv-section--closing .zv-closing-permission {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 600;
+  color: #007a7a;
+}
+
+/* --- CTA Paths: The Departure --- */
+.zv-section--paths {
+  background: #0b0b10;
+  border-top: 1px solid var(--void-border);
+}
+
+/* ============================================
+   Console Effects — Ship Display Aesthetic
+   Dauntless Gambit bridge console. You are
+   looking at this through a tactical display.
+   ============================================ */
+
+/* --- Scanline Overlay --- */
+/* Subtle horizontal interference across the entire viewport */
+.zv-manifesto::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.025) 2px,
+    rgba(0, 0, 0, 0.025) 4px
+  );
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* --- CRT Vignette --- */
+/* Dark falloff at the edges — viewing through a curved display */
+.zv-manifesto::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* --- HUD Corner Brackets --- */
+/* Targeting reticle on principle cards — appear on scroll, intensify on hover */
+.zv-principle-card::before,
+.zv-principle-card::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out);
+  pointer-events: none;
+}
+
+.zv-principle-card::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--cyan);
+  border-left: 2px solid var(--cyan);
+}
+
+.zv-principle-card::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--cyan);
+  border-right: 2px solid var(--cyan);
+}
+
+.zv-animate.zv-visible .zv-principle-card::before,
+.zv-animate.zv-visible .zv-principle-card::after {
+  opacity: 0.3;
+}
+
+.zv-principle-card:hover::before,
+.zv-principle-card:hover::after {
+  opacity: 0.7;
+}
+
+/* --- Status Pulse Dots --- */
+/* Blinking system-alive indicator before each section number */
+.zv-section-number::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--cyan);
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+  animation: status-pulse 2.5s ease-in-out infinite;
+  box-shadow: 0 0 8px var(--cyan-glow);
+}
+
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--cyan-glow); }
+  50% { opacity: 0.3; box-shadow: 0 0 2px var(--cyan-glow); }
+}
+
+/* Inverted section override */
+.zv-section--closing .zv-section-number::before {
+  background: #007a7a;
+  box-shadow: 0 0 8px rgba(0, 122, 122, 0.3);
+}
+
+/* --- Holographic Title Sweep --- */
+/* Slow ambient shimmer across dark-section titles — "system alive" indicator */
+@keyframes holo-sweep {
+  0%, 82%, 100% { background-position: -200% center; }
+  92% { background-position: 200% center; }
+}
+
+.zv-section--declaration .zv-section-title,
+.zv-section--timeline .zv-section-title,
+.zv-section--principles .zv-section-title,
+.zv-section--contrasts .zv-section-title,
+.zv-section--markiii .zv-section-title {
+  background: linear-gradient(
+    90deg,
+    var(--text-primary) 0%,
+    var(--text-primary) 40%,
+    var(--cyan) 50%,
+    var(--text-primary) 60%,
+    var(--text-primary) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: holo-sweep 12s ease-in-out infinite;
+}
+
+/* Stagger so only one title shimmers at a time */
+.zv-section--timeline .zv-section-title { animation-delay: 2.4s; }
+.zv-section--principles .zv-section-title { animation-delay: 4.8s; }
+.zv-section--contrasts .zv-section-title { animation-delay: 7.2s; }
+.zv-section--markiii .zv-section-title { animation-delay: 9.6s; }
+
+/* --- Chromatic Aberration --- */
+/* RGB split on hero title hover — signal interference */
+.zv-hero-title:hover {
+  text-shadow:
+    -2px 0 rgba(255, 0, 128, 0.15),
+    2px 0 rgba(0, 255, 255, 0.15);
+}
+
+/* --- Coordinate Display Flicker --- */
+/* Occasional power fluctuation on the fixed coordinate readout */
+.zv-manifesto .zv-coordinates {
+  animation: coordinate-drift 6s ease-in-out infinite, coord-flicker 18s linear infinite;
+}
+
+@keyframes coord-flicker {
+  0%, 95%, 96%, 97%, 100% { filter: none; }
+  95.3% { filter: brightness(0.15); }
+  95.6% { filter: none; }
+  96.3% { filter: brightness(0.25); }
+  96.6% { filter: none; }
+}
+
+/* ============================================
+   Boot Sequence — System Initialization
+   ============================================ */
+
+.zv-boot {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.7s ease-out;
+}
+
+.zv-boot--fading {
+  opacity: 0;
+}
+
+.zv-boot-terminal {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--cyan);
+  letter-spacing: 0.05em;
+  line-height: 2.2;
+  max-width: 480px;
+  padding: 24px;
+}
+
+.zv-boot-line {
+  animation: boot-line-in 0.15s ease-out;
+  white-space: nowrap;
+}
+
+@keyframes boot-line-in {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.zv-boot-cursor {
+  color: var(--cyan);
+  animation: boot-blink 0.5s step-end infinite;
+}
+
+@keyframes boot-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ============================================
+   Crew Cards — The Origin Page
+   ============================================ */
+
+.zv-crew-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.zv-crew-card {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-left: 2px solid rgba(0, 255, 255, 0.15);
+  transition: border-left-color 0.3s var(--ease-out), background 0.3s var(--ease-out);
+}
+
+.zv-crew-card:hover {
+  border-left-color: rgba(0, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.zv-crew-card-name {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.zv-crew-card-role {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--cyan);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.zv-crew-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Ask the Manifesto — Chat Interface
+   ============================================ */
+
+.zv-chat {
+  max-width: 720px;
+}
+
+.zv-chat-messages {
+  min-height: 200px;
+  margin-bottom: 24px;
+}
+
+.zv-chat-empty {
+  padding: 32px 0;
+}
+
+.zv-chat-empty p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.zv-chat-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.zv-chat-suggestion {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--void-border);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  text-align: left;
+  padding: 14px 20px;
+  cursor: pointer;
+  transition: border-color 0.3s var(--ease-out), color 0.3s var(--ease-out);
+  line-height: 1.5;
+}
+
+.zv-chat-suggestion:hover {
+  border-color: rgba(0, 255, 255, 0.2);
+  color: var(--text-primary);
+}
+
+.zv-chat-msg {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--void-border);
+}
+
+.zv-chat-msg:last-child {
+  border-bottom: none;
+}
+
+.zv-chat-msg-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.zv-chat-msg--user .zv-chat-msg-label {
+  color: var(--text-tertiary);
+}
+
+.zv-chat-msg--assistant .zv-chat-msg-label {
+  color: var(--cyan);
+}
+
+.zv-chat-msg-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+.zv-chat-msg--assistant .zv-chat-msg-text {
+  color: var(--text-primary);
+}
+
+.zv-chat-loading span {
+  animation: chat-dot 1.2s ease-in-out infinite;
+  display: inline-block;
+}
+
+.zv-chat-loading span:nth-child(2) { animation-delay: 0.2s; }
+.zv-chat-loading span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes chat-dot {
+  0%, 80%, 100% { opacity: 0.2; }
+  40% { opacity: 1; }
+}
+
+.zv-chat-input-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.zv-chat-input {
+  flex: 1;
+  background: var(--void-elevated);
+  border: 1px solid var(--void-border);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 14px 20px;
+  resize: none;
+  outline: none;
+  line-height: 1.6;
+  transition: border-color 0.3s var(--ease-out);
+}
+
+.zv-chat-input:focus {
+  border-color: var(--cyan);
+}
+
+.zv-chat-input::placeholder {
+  color: var(--text-muted);
+}
+
+.zv-chat-send {
+  background: var(--cyan);
+  color: var(--void);
+  border: none;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 14px 24px;
+  cursor: pointer;
+  transition: background 0.3s var(--ease-out);
+  white-space: nowrap;
+}
+
+.zv-chat-send:hover {
+  background: var(--text-primary);
+}
+
+.zv-chat-send:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   Quiz — Am I Vibe Coding?
+   ============================================ */
+
+.zv-quiz {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.zv-quiz-question {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.zv-quiz-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cyan);
+  letter-spacing: 0.1em;
+}
+
+.zv-quiz-text {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.zv-quiz-input {
+  background: var(--void-elevated);
+  border: 1px solid var(--void-border);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 14px 20px;
+  resize: vertical;
+  outline: none;
+  line-height: 1.6;
+  transition: border-color 0.3s var(--ease-out);
+  margin-top: 4px;
+}
+
+.zv-quiz-input:focus {
+  border-color: var(--cyan);
+}
+
+.zv-quiz-input::placeholder {
+  color: var(--text-muted);
+}
+
+.zv-quiz-submit-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-top: 8px;
+}
+
+.zv-quiz-counter {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+}
+
+/* --- Quiz Results --- */
+.zv-quiz-result {
+  max-width: 720px;
+}
+
+.zv-quiz-score-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.zv-quiz-score {
+  font-family: var(--font-mono);
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 700;
+  color: var(--cyan);
+  line-height: 1;
+  text-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+}
+
+.zv-quiz-score-label {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--text-tertiary);
+}
+
+.zv-quiz-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.zv-quiz-summary {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.zv-quiz-section {
+  margin-bottom: 32px;
+}
+
+.zv-quiz-section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--cyan);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.zv-quiz-item {
+  font-size: 1rem;
+  line-height: 1.7;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--void-border);
+}
+
+.zv-quiz-item--strength {
+  color: var(--text-primary);
+}
+
+.zv-quiz-item--friction {
+  color: var(--magenta);
+}
+
+.zv-quiz-next {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  line-height: 1.8;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.015);
+  border-left: 3px solid var(--cyan);
+}
+
 /* --- Typography --- */
 .zv-hero-title {
   font-family: var(--font-display);
@@ -1295,14 +2300,62 @@ a:hover {
     padding: 32px 24px;
   }
 
-  /* Seven Principles: tighten layout */
-  .zv-seven-principle {
-    gap: 20px;
+  /* Crew grid: stack on mobile */
+  .zv-crew-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
-  .zv-seven-principle-numeral {
-    width: 48px;
+  .zv-crew-card {
+    padding: 20px;
+  }
+
+  /* Boot: smaller text on mobile */
+  .zv-boot-terminal {
+    font-size: 12px;
+    padding: 20px;
+    max-width: 320px;
+  }
+
+  /* Declaration: reduce extra left padding on mobile */
+  .zv-section--declaration .zv-container {
+    padding-left: calc(var(--container-padding) + 16px);
+  }
+
+  /* Principle cards: tighter on mobile */
+  .zv-principles-grid {
+    gap: 16px;
+  }
+
+  .zv-principle-card {
+    padding: 28px 24px;
+  }
+
+  .zv-principle-card-numeral {
     font-size: 2rem;
+  }
+
+  .zv-principle-card-title {
+    font-size: 1.25rem;
+  }
+
+  .zv-principle-card-detail-content {
+    margin-left: 0;
+    margin-top: 20px;
+    padding: 20px 24px;
+  }
+
+  .zv-principle-card-detail-text {
+    font-size: 0.95rem;
+  }
+
+  .zv-principle-card-detail-links {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .zv-principle-card-detail-links a {
+    font-size: 11px;
   }
 
   /* Contrasts: stack vertically */
@@ -1315,6 +2368,21 @@ a:hover {
   .zv-contrast-not {
     padding-bottom: 24px;
     border-bottom: 1px solid var(--void-border);
+  }
+
+  /* Inverted contrast cards: tighter on mobile, no border between halves */
+  .zv-section--contrasts .zv-contrast-not {
+    padding: 24px;
+    border-bottom: none;
+  }
+
+  .zv-section--contrasts .zv-contrast-is {
+    padding: 24px;
+  }
+
+  /* Inverted callouts: tighter padding on mobile */
+  .zv-section--declaration .zv-callout {
+    padding: 20px 24px;
   }
 }
 

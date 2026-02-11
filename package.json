@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 3006",
+    "dev": "vite",
+    "dev:standalone": "vite --port 3006",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.74.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-router-dom": "^7.12.0"
