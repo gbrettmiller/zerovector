@@ -2,12 +2,12 @@ import { useEffect, useState, useRef } from 'react';
 import VectorField from '../components/VectorField';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
-import PageHero from '../components/PageHero';
 
 function AskPage() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [bootPhase, setBootPhase] = useState(0);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -15,9 +15,26 @@ function AskPage() {
     document.title = 'Ask the Manifesto — Zero-Vector Design';
   }, []);
 
+  // Boot sequence
+  useEffect(() => {
+    const timers = [
+      setTimeout(() => setBootPhase(1), 300),
+      setTimeout(() => setBootPhase(2), 800),
+      setTimeout(() => setBootPhase(3), 1400),
+      setTimeout(() => setBootPhase(4), 2000),
+    ];
+    return () => timers.forEach(clearTimeout);
+  }, []);
+
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  useEffect(() => {
+    if (bootPhase >= 4) {
+      inputRef.current?.focus();
+    }
+  }, [bootPhase]);
 
   const send = async () => {
     const text = input.trim();
@@ -39,14 +56,18 @@ function AskPage() {
       const data = await res.json();
 
       if (res.status === 429) {
-        setMessages(prev => [...prev, { role: 'assistant', content: 'Transmission frequency exceeded. Wait a few minutes before asking again.' }]);
+        setMessages(prev => [...prev, { role: 'assistant', content: 'ERR: Transmission frequency exceeded. Retry in 120s.' }]);
       } else if (data.reply) {
         setMessages(prev => [...prev, { role: 'assistant', content: data.reply }]);
       } else {
-        setMessages(prev => [...prev, { role: 'assistant', content: 'Signal lost. Try again.' }]);
+        setMessages(prev => [...prev, { role: 'assistant', content: 'ERR: Signal lost. Retry transmission.' }]);
       }
-    } catch {
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Transmission failed. Try again.' }]);
+    } catch (err) {
+      const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const msg = isDev
+        ? 'ERR: Function server unreachable. Run "netlify dev" instead of "npm run dev" for local function support.'
+        : 'ERR: Connection failed. Retry transmission.';
+      setMessages(prev => [...prev, { role: 'assistant', content: msg }]);
     }
 
     setLoading(false);
@@ -60,76 +81,114 @@ function AskPage() {
     }
   };
 
+  const suggestions = [
+    'What is the difference between Zero-Vector and vibe coding?',
+    'Our team uses Figma, then hands off to engineering. What would you change?',
+    'How do I start practicing Zero-Vector Design?',
+  ];
+
   return (
     <div className="zv-page">
       <VectorField />
       <Nav />
 
-      <PageHero
-        eyebrow="Interactive"
-        title="Ask the Manifesto"
-        subtitle="The manifesto talks back. Ask it anything about Zero-Vector Design."
-      />
-
-      <section className="zv-section" style={{ paddingTop: 0 }}>
+      <section className="zv-section zv-terminal-section">
         <div className="zv-container">
-          <div className="zv-chat">
-            <div className="zv-chat-messages">
-              {messages.length === 0 && (
-                <div className="zv-chat-empty">
-                  <p>Ask a question. Challenge a principle. Describe your process and see what the manifesto thinks.</p>
-                  <div className="zv-chat-suggestions">
-                    {[
-                      'What is the difference between Zero-Vector and vibe coding?',
-                      'Our team uses Figma to design, then hands off to engineering. What would you change?',
-                      'Why should I care about the Mark III Problem?',
-                    ].map((suggestion, i) => (
-                      <button
-                        key={i}
-                        className="zv-chat-suggestion"
-                        onClick={() => { setInput(suggestion); inputRef.current?.focus(); }}
-                      >
-                        {suggestion}
-                      </button>
-                    ))}
+          <div className="zv-terminal">
+            {/* Terminal chrome */}
+            <div className="zv-terminal-header">
+              <div className="zv-terminal-dots">
+                <span /><span /><span />
+              </div>
+              <div className="zv-terminal-title">MANIFESTO INTERFACE v2.0</div>
+              <div className="zv-terminal-status">
+                {bootPhase >= 4 ? 'CONNECTED' : 'BOOTING...'}
+              </div>
+            </div>
+
+            {/* Terminal body */}
+            <div className="zv-terminal-body">
+              {/* Boot sequence */}
+              <div className="zv-terminal-boot">
+                {bootPhase >= 1 && (
+                  <div className="zv-terminal-line zv-terminal-system">
+                    [SYSTEM] Initializing manifesto interface...
                   </div>
+                )}
+                {bootPhase >= 2 && (
+                  <div className="zv-terminal-line zv-terminal-system">
+                    [SYSTEM] Loading doctrine: 7 principles, 8 phases, 1 philosophy
+                  </div>
+                )}
+                {bootPhase >= 3 && (
+                  <div className="zv-terminal-line zv-terminal-system">
+                    [SYSTEM] RAG corpus mounted. Knowledge base active.
+                  </div>
+                )}
+                {bootPhase >= 4 && (
+                  <div className="zv-terminal-line zv-terminal-ready">
+                    [READY] Ask a question. Challenge a principle. Describe your process.
+                  </div>
+                )}
+              </div>
+
+              {/* Messages */}
+              {messages.length === 0 && bootPhase >= 4 && (
+                <div className="zv-terminal-suggestions">
+                  <div className="zv-terminal-line zv-terminal-system" style={{ marginBottom: 12 }}>
+                    [SUGGESTED QUERIES]
+                  </div>
+                  {suggestions.map((suggestion, i) => (
+                    <button
+                      key={i}
+                      className="zv-terminal-suggestion"
+                      onClick={() => { setInput(suggestion); inputRef.current?.focus(); }}
+                    >
+                      <span className="zv-terminal-suggestion-num">[{String(i + 1).padStart(2, '0')}]</span>
+                      {suggestion}
+                    </button>
+                  ))}
                 </div>
               )}
+
               {messages.map((msg, i) => (
-                <div key={i} className={`zv-chat-msg zv-chat-msg--${msg.role}`}>
-                  <div className="zv-chat-msg-label">
-                    {msg.role === 'user' ? 'You' : 'Manifesto'}
-                  </div>
-                  <div className="zv-chat-msg-text">{msg.content}</div>
+                <div key={i} className={`zv-terminal-line ${msg.role === 'user' ? 'zv-terminal-user' : 'zv-terminal-response'}`}>
+                  <span className="zv-terminal-prompt">
+                    {msg.role === 'user' ? '>' : '[MANIFESTO]'}
+                  </span>
+                  {' '}{msg.content}
                 </div>
               ))}
+
               {loading && (
-                <div className="zv-chat-msg zv-chat-msg--assistant">
-                  <div className="zv-chat-msg-label">Manifesto</div>
-                  <div className="zv-chat-msg-text zv-chat-loading">
-                    <span>.</span><span>.</span><span>.</span>
-                  </div>
+                <div className="zv-terminal-line zv-terminal-response zv-terminal-loading">
+                  <span className="zv-terminal-prompt">[MANIFESTO]</span>
+                  {' '}<span className="zv-terminal-cursor-block" />
                 </div>
               )}
+
               <div ref={bottomRef} />
             </div>
-            <div className="zv-chat-input-row">
+
+            {/* Terminal input */}
+            <div className={`zv-terminal-input-row ${bootPhase < 4 ? 'zv-terminal-input-disabled' : ''}`}>
+              <span className="zv-terminal-input-prompt">&gt;</span>
               <textarea
                 ref={inputRef}
-                className="zv-chat-input"
+                className="zv-terminal-input"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Ask the manifesto..."
+                placeholder={bootPhase >= 4 ? 'Enter query...' : ''}
                 rows={1}
-                disabled={loading}
+                disabled={loading || bootPhase < 4}
               />
               <button
-                className="zv-chat-send"
+                className="zv-terminal-send"
                 onClick={send}
-                disabled={loading || !input.trim()}
+                disabled={loading || !input.trim() || bootPhase < 4}
               >
-                Send
+                TRANSMIT
               </button>
             </div>
           </div>

@@ -16,18 +16,39 @@ function Animate({ children, className = '', delay = 0 }) {
   );
 }
 
-const { reading } = en;
+const { media } = en;
 
 function ReadingPage() {
-  useEffect(() => { document.title = 'Reading — Zero-Vector Design'; }, []);
+  useEffect(() => { document.title = 'Media — Zero-Vector Design'; }, []);
 
   return (
-    <div className="zv-page">
+    <div className="zv-page zv-info-page">
       <VectorField />
       <Nav />
 
       {/* Hero */}
-      <PageHero eyebrow={reading.eyebrow} title={reading.title} subtitle={reading.subtitle} />
+      <PageHero eyebrow={media.eyebrow} title={media.title} subtitle={media.subtitle} />
+
+      {/* Featured — Substack + Podcast */}
+      <section className="zv-section">
+        <div className="zv-container">
+          <Animate>
+            <h2 className="zv-section-title">{media.featured.title}</h2>
+          </Animate>
+          <div className="zv-media-featured">
+            {media.featured.items.map((item, i) => (
+              <Animate key={i}>
+                <a href={item.url} target="_blank" rel="noopener noreferrer" className="zv-media-featured-card">
+                  <div className="zv-media-featured-type">{item.type}</div>
+                  <h3 className="zv-media-featured-title">{item.title}</h3>
+                  <p className="zv-media-featured-desc">{item.description}</p>
+                  <span className="zv-media-featured-cta">{item.cta} <ExternalLinkIcon size={14} /></span>
+                </a>
+              </Animate>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Articles */}
       <section className="zv-section">
@@ -36,7 +57,7 @@ function ReadingPage() {
             <h2 className="zv-section-title">Articles</h2>
           </Animate>
           <div className="zv-resource-list">
-            {reading.articles.map((item, i) => (
+            {media.articles.map((item, i) => (
               <Animate key={i}>
                 <a href={item.url} target="_blank" rel="noopener noreferrer" className="zv-resource-card">
                   <div className="zv-resource-card-type">Substack</div>
@@ -56,7 +77,7 @@ function ReadingPage() {
             <h2 className="zv-section-title">Recommended Reading</h2>
           </Animate>
           <div className="zv-resource-list">
-            {reading.books.map((book, i) => (
+            {media.books.map((book, i) => (
               <Animate key={i}>
                 <a href={book.url} target="_blank" rel="noopener noreferrer" className="zv-resource-card">
                   <div className="zv-resource-card-type">Book</div>
@@ -76,7 +97,7 @@ function ReadingPage() {
             <h2 className="zv-section-title">Videos &amp; Talks</h2>
           </Animate>
           <div className="zv-resource-list">
-            {reading.talks.map((talk, i) => (
+            {media.talks.map((talk, i) => (
               <Animate key={i}>
                 <a href={talk.url} target="_blank" rel="noopener noreferrer" className="zv-resource-card">
                   <div className="zv-resource-card-type">{talk.type}</div>
@@ -88,6 +109,18 @@ function ReadingPage() {
           </div>
         </div>
       </section>
+
+      {/* People to Follow — Placeholder */}
+      {media.voices.items.length > 0 && (
+        <section className="zv-section">
+          <div className="zv-container">
+            <Animate>
+              <h2 className="zv-section-title">{media.voices.title}</h2>
+              <p className="zv-section-subtitle">{media.voices.subtitle}</p>
+            </Animate>
+          </div>
+        </section>
+      )}
 
       <Footer />
     </div>

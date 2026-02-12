@@ -15,42 +15,62 @@ function Animate({ children, className = '', delay = 0 }) {
   );
 }
 
-const { pipeline } = en;
+const { approach } = en;
 
 function PipelinePage() {
-  useEffect(() => { document.title = 'Pipeline — Zero-Vector Design'; }, []);
+  useEffect(() => { document.title = 'Approach — Zero-Vector Design'; }, []);
 
   return (
-    <div className="zv-page">
+    <div className="zv-page zv-info-page">
       <VectorField />
       <Nav />
 
       {/* Hero */}
-      <PageHero eyebrow={pipeline.eyebrow} title={pipeline.title} subtitle={pipeline.subtitle} />
+      <PageHero eyebrow={approach.eyebrow} title={approach.title} subtitle={approach.subtitle} />
 
-      {/* Overview */}
+      {/* Intro */}
       <section className="zv-section">
         <div className="zv-container">
-          {pipeline.overview.map((p, i) => (
-            <Animate key={i} delay={Math.min(i + 1, 4)}>
+          {approach.intro.map((p, i) => (
+            <Animate key={i} delay={Math.min(i + 1, 2)}>
               <p className="zv-body-text">{p}</p>
             </Animate>
           ))}
         </div>
       </section>
 
-      {/* Phase Deep Dives */}
-      {Object.entries(pipeline.phases).map(([id, phase]) => (
-        <section key={id} className="zv-section zv-pipeline-deep">
+      {/* Phase Deep Dives — Two Column */}
+      {approach.phases.map((phase) => (
+        <section key={phase.id} className="zv-section zv-approach-phase">
           <div className="zv-container">
             <Animate>
-              <h2 className="zv-section-title">{phase.title}</h2>
+              <div className="zv-approach-phase-header">
+                <span className="zv-approach-phase-number">{phase.number}</span>
+                <h2 className="zv-section-title">{phase.name}</h2>
+              </div>
             </Animate>
-            {phase.deep.map((p, i) => (
-              <Animate key={i} delay={Math.min(i + 1, 4)}>
-                <p className="zv-body-text">{p}</p>
-              </Animate>
-            ))}
+            <div className="zv-approach-phase-columns">
+              <div className="zv-approach-phase-agnostic">
+                <Animate>
+                  <div className="zv-approach-column-label">What This Is</div>
+                </Animate>
+                {phase.agnostic.map((p, i) => (
+                  <Animate key={i} delay={Math.min(i + 1, 2)}>
+                    <p className="zv-body-text">{p}</p>
+                  </Animate>
+                ))}
+              </div>
+              <div className="zv-approach-phase-zv">
+                <Animate>
+                  <div className="zv-approach-column-label">The Zero-Vector Way</div>
+                </Animate>
+                {phase.zeroVector.map((p, i) => (
+                  <Animate key={i} delay={Math.min(i + 1, 2)}>
+                    <p className="zv-body-text">{p}</p>
+                  </Animate>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       ))}

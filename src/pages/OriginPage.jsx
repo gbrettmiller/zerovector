@@ -22,21 +22,36 @@ function OriginPage() {
   useEffect(() => { document.title = 'The Origin — Zero-Vector Design'; }, []);
 
   return (
-    <div className="zv-page">
+    <div className="zv-page zv-info-page">
       <VectorField />
       <Nav />
 
       {/* Hero */}
       <PageHero eyebrow={origin.eyebrow} title={origin.title} subtitle={origin.subtitle} />
 
-      {/* Intro */}
+      {/* Intro — First Person */}
       <section className="zv-section">
         <div className="zv-container">
           {origin.intro.map((p, i) => (
-            <Animate key={i} delay={Math.min(i + 1, 4)}>
-              <p className={`zv-body-text ${i === 1 ? 'zv-origin-name' : ''}`}>{p}</p>
+            <Animate key={i} delay={Math.min(i + 1, 2)}>
+              <p className="zv-body-text">{p}</p>
             </Animate>
           ))}
+        </div>
+      </section>
+
+      {/* Photo Placeholders */}
+      <section className="zv-section" style={{ paddingTop: 0 }}>
+        <div className="zv-container">
+          <Animate>
+            <div className="zv-origin-photos">
+              {origin.photos.map((photo) => (
+                <div key={photo.id} className="zv-origin-photo-placeholder">
+                  <span className="zv-origin-photo-label">{photo.alt}</span>
+                </div>
+              ))}
+            </div>
+          </Animate>
         </div>
       </section>
 
@@ -53,7 +68,7 @@ function OriginPage() {
             </div>
           </Animate>
           {origin.nasa.body.map((p, i) => (
-            <Animate key={i} delay={Math.min(i + 1, 4)}>
+            <Animate key={i} delay={Math.min(i + 1, 2)}>
               <p className="zv-body-text">{p}</p>
             </Animate>
           ))}
@@ -76,14 +91,28 @@ function OriginPage() {
         </div>
       </section>
 
-      {/* Why This Exists */}
+      {/* The AI Journey */}
       <section className="zv-section">
         <div className="zv-container">
           <Animate>
-            <h2 className="zv-section-title">{origin.why.title}</h2>
+            <h2 className="zv-section-title">{origin.ai_journey.title}</h2>
           </Animate>
-          {origin.why.paragraphs.map((p, i) => (
-            <Animate key={i} delay={Math.min(i + 1, 4)}>
+          {origin.ai_journey.paragraphs.map((p, i) => (
+            <Animate key={i} delay={Math.min(i + 1, 3)}>
+              <p className="zv-body-text">{p}</p>
+            </Animate>
+          ))}
+        </div>
+      </section>
+
+      {/* The Redefinition */}
+      <section className="zv-section">
+        <div className="zv-container">
+          <Animate>
+            <h2 className="zv-section-title">{origin.redefinition.title}</h2>
+          </Animate>
+          {origin.redefinition.paragraphs.map((p, i) => (
+            <Animate key={i} delay={Math.min(i + 1, 3)}>
               <p className="zv-body-text">{p}</p>
             </Animate>
           ))}

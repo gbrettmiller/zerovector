@@ -95,6 +95,15 @@ a:hover {
   position: relative;
 }
 
+/* --- Info Page Tighter Spacing --- */
+.zv-info-page .zv-section {
+  padding: 100px 0;
+}
+
+.zv-info-page .zv-page-hero + .zv-section {
+  padding-top: 60px;
+}
+
 /* ============================================
    Section Visual Treatments
    Non-repeating visual narrative — each section
@@ -152,12 +161,21 @@ a:hover {
   z-index: 0;
 }
 
+.zv-section--pipeline .zv-section-number {
+  color: #007a7a;
+}
+
 .zv-section--pipeline .zv-section-title {
   color: #0a0a0a;
 }
 
 .zv-section--pipeline .zv-section-subtitle {
   color: #555;
+}
+
+.zv-section--pipeline .zv-body-text {
+  color: #333;
+  max-width: 720px;
 }
 
 .zv-section--pipeline .zv-pipeline-label {
@@ -231,11 +249,67 @@ a:hover {
   border-color: rgba(0, 255, 255, 0.2);
 }
 
+/* --- Principle Zero (Homepage) --- */
+.zv-principle-zero-home {
+  margin-top: 48px;
+  padding: 64px 48px;
+  border: 2px solid var(--cyan);
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.04) 0%, rgba(0, 255, 255, 0.01) 50%, rgba(0, 255, 255, 0.06) 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.zv-principle-zero-home::before {
+  content: '0';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: clamp(15rem, 30vw, 25rem);
+  font-weight: 800;
+  color: rgba(0, 255, 255, 0.03);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.zv-principle-zero-home-numeral {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cyan);
+  letter-spacing: 0.25em;
+  line-height: 1;
+  margin-bottom: 32px;
+  text-shadow: 0 0 20px var(--cyan-glow);
+  position: relative;
+}
+
+.zv-principle-zero-home-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.35;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  text-shadow: 0 0 40px rgba(0, 255, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+  .zv-principle-zero-home {
+    padding: 48px 24px;
+  }
+}
+
 /* --- Principle Cards --- */
 .zv-principles-grid {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .zv-principle-card {
@@ -243,7 +317,7 @@ a:hover {
   background: rgba(255, 255, 255, 0.015);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-left: 3px solid rgba(0, 255, 255, 0.15);
-  padding: 40px 48px;
+  padding: 28px 36px;
   transition: border-left-color 0.8s var(--ease-out), box-shadow 0.8s var(--ease-out), background 0.3s var(--ease-out);
 }
 
@@ -256,37 +330,53 @@ a:hover {
   background: rgba(255, 255, 255, 0.025);
 }
 
+.zv-principle-card-row {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.zv-principle-card-content {
+  min-width: 0;
+}
+
 .zv-principle-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
+  gap: 16px;
 }
 
 .zv-principle-card-numeral {
   font-family: var(--font-mono);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 700;
   color: var(--cyan);
   line-height: 1;
   text-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
+  padding-top: 4px;
 }
 
 .zv-principle-card-title {
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   line-height: 1.2;
 }
 
 .zv-principle-card-body {
   font-family: var(--font-body);
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--text-secondary);
-  line-height: 1.8;
+  line-height: 1.7;
   max-width: 720px;
+}
+
+.zv-principles-intro {
+  margin-bottom: 32px;
 }
 
 /* --- Principle Disclosure Toggle --- */
@@ -519,8 +609,15 @@ a:hover {
 }
 
 .zv-section--closing .zv-container {
-  max-width: 800px;
+  max-width: var(--container-max);
   text-align: center;
+}
+
+.zv-section--closing .zv-body-text,
+.zv-section--closing .zv-section-header {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .zv-section--closing .zv-section-number {
@@ -542,12 +639,58 @@ a:hover {
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 600;
   color: #007a7a;
+  line-height: 1.35;
 }
 
-/* --- CTA Paths: The Departure --- */
-.zv-section--paths {
-  background: #0b0b10;
-  border-top: 1px solid var(--void-border);
+.zv-closing-paths {
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+.zv-closing-paths .zv-path-card {
+  background: #f5f5f5;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.zv-closing-paths .zv-path-card:hover {
+  border-color: #007a7a;
+  box-shadow: 0 0 24px rgba(0, 122, 122, 0.08);
+}
+
+.zv-closing-paths .zv-path-eyebrow {
+  color: #007a7a;
+}
+
+.zv-closing-paths .zv-path-title {
+  color: #0a0a0a;
+}
+
+.zv-closing-paths .zv-path-desc {
+  color: #444;
+}
+
+.zv-closing-paths .zv-path-cta {
+  color: #007a7a;
+}
+
+.zv-closing-substack {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.zv-closing-substack-text {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.zv-section--closing .zv-cta {
+  background: #007a7a;
+  color: #ffffff;
+}
+
+.zv-section--closing .zv-cta:hover {
+  background: #005a5a;
 }
 
 /* ============================================
@@ -803,149 +946,236 @@ a:hover {
 }
 
 /* ============================================
-   Ask the Manifesto — Chat Interface
+   Ask the Manifesto — Terminal Interface
    ============================================ */
 
-.zv-chat {
-  max-width: 720px;
+.zv-terminal-section {
+  padding-top: 120px;
 }
 
-.zv-chat-messages {
-  min-height: 200px;
-  margin-bottom: 24px;
+.zv-terminal {
+  max-width: 860px;
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
 }
 
-.zv-chat-empty {
-  padding: 32px 0;
+.zv-terminal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 255, 0.01) 2px,
+    rgba(0, 255, 255, 0.01) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
-.zv-chat-empty p {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 24px;
-}
-
-.zv-chat-suggestions {
+/* Terminal Chrome */
+.zv-terminal-header {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: rgba(0, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
 }
 
-.zv-chat-suggestion {
-  background: rgba(255, 255, 255, 0.015);
-  border: 1px solid var(--void-border);
-  color: var(--text-secondary);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  text-align: left;
-  padding: 14px 20px;
-  cursor: pointer;
-  transition: border-color 0.3s var(--ease-out), color 0.3s var(--ease-out);
-  line-height: 1.5;
+.zv-terminal-dots {
+  display: flex;
+  gap: 6px;
 }
 
-.zv-chat-suggestion:hover {
-  border-color: rgba(0, 255, 255, 0.2);
-  color: var(--text-primary);
+.zv-terminal-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
 }
 
-.zv-chat-msg {
-  padding: 20px 0;
-  border-bottom: 1px solid var(--void-border);
-}
+.zv-terminal-dots span:first-child { background: #ff5f57; }
+.zv-terminal-dots span:nth-child(2) { background: #ffbd2e; }
+.zv-terminal-dots span:nth-child(3) { background: #28c840; }
 
-.zv-chat-msg:last-child {
-  border-bottom: none;
-}
-
-.zv-chat-msg-label {
+.zv-terminal-title {
+  flex: 1;
   font-family: var(--font-mono);
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.zv-chat-msg--user .zv-chat-msg-label {
   color: var(--text-tertiary);
+  text-align: center;
 }
 
-.zv-chat-msg--assistant .zv-chat-msg-label {
+.zv-terminal-status {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
   color: var(--cyan);
 }
 
-.zv-chat-msg-text {
-  font-size: 1.05rem;
+/* Terminal Body */
+.zv-terminal-body {
+  padding: 24px;
+  min-height: 300px;
+  max-height: 500px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 14px;
   line-height: 1.8;
+  position: relative;
+  z-index: 2;
+}
+
+.zv-terminal-boot {
+  margin-bottom: 16px;
+}
+
+.zv-terminal-line {
+  padding: 4px 0;
+  word-wrap: break-word;
+}
+
+.zv-terminal-system {
+  color: var(--text-tertiary);
+}
+
+.zv-terminal-ready {
+  color: var(--cyan);
+}
+
+.zv-terminal-user {
+  color: var(--text-primary);
+  margin-top: 12px;
+}
+
+.zv-terminal-response {
+  color: var(--cyan-dim);
+  margin-top: 4px;
+  margin-bottom: 12px;
+  white-space: pre-wrap;
+}
+
+.zv-terminal-prompt {
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+.zv-terminal-user .zv-terminal-prompt {
   color: var(--text-secondary);
-  max-width: 640px;
 }
 
-.zv-chat-msg--assistant .zv-chat-msg-text {
-  color: var(--text-primary);
+/* Suggestions */
+.zv-terminal-suggestions {
+  margin-top: 16px;
 }
 
-.zv-chat-loading span {
-  animation: chat-dot 1.2s ease-in-out infinite;
+.zv-terminal-suggestion {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: left;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: color 0.2s var(--ease-out);
+  line-height: 1.5;
+}
+
+.zv-terminal-suggestion:hover {
+  color: var(--cyan);
+}
+
+.zv-terminal-suggestion-num {
+  color: var(--cyan);
+  margin-right: 8px;
+}
+
+/* Loading cursor */
+.zv-terminal-cursor-block {
   display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--cyan);
+  animation: terminal-blink 1s step-end infinite;
+  vertical-align: middle;
 }
 
-.zv-chat-loading span:nth-child(2) { animation-delay: 0.2s; }
-.zv-chat-loading span:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes chat-dot {
-  0%, 80%, 100% { opacity: 0.2; }
-  40% { opacity: 1; }
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-.zv-chat-input-row {
+/* Terminal Input */
+.zv-terminal-input-row {
   display: flex;
-  gap: 12px;
-  align-items: flex-end;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 20px;
+  border-top: 1px solid rgba(0, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
 }
 
-.zv-chat-input {
+.zv-terminal-input-disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.zv-terminal-input-prompt {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cyan);
+  flex-shrink: 0;
+}
+
+.zv-terminal-input {
   flex: 1;
-  background: var(--void-elevated);
-  border: 1px solid var(--void-border);
+  background: transparent;
+  border: none;
   color: var(--text-primary);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  padding: 14px 20px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  padding: 4px 0;
   resize: none;
   outline: none;
   line-height: 1.6;
-  transition: border-color 0.3s var(--ease-out);
 }
 
-.zv-chat-input:focus {
-  border-color: var(--cyan);
-}
-
-.zv-chat-input::placeholder {
+.zv-terminal-input::placeholder {
   color: var(--text-muted);
 }
 
-.zv-chat-send {
-  background: var(--cyan);
-  color: var(--void);
-  border: none;
-  font-family: var(--font-display);
-  font-size: 0.9rem;
+.zv-terminal-send {
+  background: transparent;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 11px;
   font-weight: 600;
-  padding: 14px 24px;
+  letter-spacing: 0.15em;
+  padding: 8px 16px;
   cursor: pointer;
-  transition: background 0.3s var(--ease-out);
+  transition: background 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
   white-space: nowrap;
 }
 
-.zv-chat-send:hover {
-  background: var(--text-primary);
+.zv-terminal-send:hover {
+  background: rgba(0, 255, 255, 0.08);
+  border-color: var(--cyan);
 }
 
-.zv-chat-send:disabled {
+.zv-terminal-send:disabled {
   opacity: 0.3;
   cursor: not-allowed;
 }
@@ -1154,6 +1384,7 @@ a:hover {
   color: var(--text-secondary);
   line-height: 1.8;
   max-width: 720px;
+  margin-bottom: 20px;
 }
 
 .zv-body-text + .zv-body-text {
@@ -1332,6 +1563,31 @@ a:hover {
 }
 
 /* --- Timeline --- */
+.zv-timeline-layout {
+  display: grid;
+  grid-template-columns: 45fr 55fr;
+  gap: 64px;
+  align-items: start;
+  margin-top: 48px;
+}
+
+.zv-timeline-narrative {
+  position: sticky;
+  top: 120px;
+}
+
+.zv-timeline-narrative .zv-body-text {
+  max-width: 100%;
+}
+
+.zv-timeline-milestone {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
 .zv-timeline {
   position: relative;
   padding-left: 32px;
@@ -1457,6 +1713,18 @@ a:hover {
   color: var(--cyan-dim);
 }
 
+.zv-pipeline-card {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  padding: 20px 24px;
+}
+
+.zv-pipeline-card-new {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
 /* --- Navigation --- */
 .zv-nav {
   position: fixed;
@@ -1531,6 +1799,38 @@ a:hover {
   height: 16px;
   background: var(--void-border);
   margin: 0 4px;
+}
+
+/* --- Nav Start Button --- */
+.zv-nav-start {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--void);
+  background: var(--cyan);
+  padding: 6px 16px;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.3s var(--ease-out);
+  margin-left: 4px;
+}
+
+.zv-nav-start:hover {
+  background: var(--text-primary);
+  box-shadow: 0 0 20px var(--cyan-glow);
+  text-shadow: none;
+}
+
+.zv-nav-start-active {
+  background: var(--text-primary);
+}
+
+.zv-nav-start-mobile {
+  color: var(--void) !important;
+  background: var(--cyan);
+  text-align: center;
+  font-weight: 600;
+  margin-top: 8px;
 }
 
 /* --- Footer --- */
@@ -1933,6 +2233,23 @@ a:hover {
 
 .zv-contrast-not .zv-contrast-title {
   color: var(--magenta);
+  position: relative;
+  display: inline-block;
+}
+
+.zv-contrast-not .zv-contrast-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 2px;
+  width: 0;
+  background: var(--magenta);
+  transition: width 0.6s var(--ease-out) 0.3s;
+}
+
+.zv-animate.zv-visible .zv-contrast-not .zv-contrast-title::after {
+  width: 100%;
 }
 
 .zv-contrast-is .zv-contrast-title {
@@ -2101,6 +2418,401 @@ a:hover {
   line-height: 1.7;
 }
 
+/* ============================================
+   Philosophy Page — Two Column + Principles
+   ============================================ */
+
+.zv-philosophy-split {
+  display: grid;
+  grid-template-columns: 65fr 35fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.zv-philosophy-what-is-not {
+  position: sticky;
+  top: 120px;
+  padding: 32px;
+  border: 1px solid var(--void-border);
+  background: var(--void-elevated);
+}
+
+.zv-philosophy-sidebar-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--magenta);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.zv-philosophy-not-item {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--void-border);
+}
+
+.zv-philosophy-not-item:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.zv-philosophy-not-claim {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--magenta);
+  margin-bottom: 6px;
+}
+
+.zv-philosophy-not-explanation {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Principle Zero — Standout */
+.zv-principle-zero {
+  border: 2px solid var(--cyan);
+  padding: 48px;
+  text-align: center;
+  position: relative;
+  background: var(--cyan-subtle);
+}
+
+.zv-principle-zero-numeral {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cyan);
+  letter-spacing: 0.2em;
+  line-height: 1;
+  margin-bottom: 24px;
+  text-shadow: 0 0 30px var(--cyan-glow), 0 0 60px var(--cyan-subtle);
+}
+
+.zv-principle-zero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+  max-width: 700px;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .zv-principle-zero {
+    padding: 32px 24px;
+  }
+}
+
+/* Philosophy Principles */
+.zv-philosophy-principles {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.zv-philosophy-principle {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.zv-philosophy-principle-numeral {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--cyan);
+  line-height: 1.2;
+  padding-top: 4px;
+}
+
+.zv-philosophy-principle-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.zv-philosophy-principle-body {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.zv-philosophy-principle-why {
+  font-size: 0.95rem;
+  color: var(--text-tertiary);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* ============================================
+   Approach Page — Two Column Phases
+   ============================================ */
+
+.zv-approach-phase {
+  border-top: 1px solid var(--void-border);
+}
+
+.zv-approach-phase-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.zv-approach-phase-number {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--cyan);
+  letter-spacing: 0.1em;
+}
+
+.zv-approach-phase-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.zv-approach-column-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.zv-approach-phase-agnostic .zv-approach-column-label {
+  color: var(--text-tertiary);
+}
+
+.zv-approach-phase-zv .zv-approach-column-label {
+  color: var(--cyan);
+}
+
+.zv-approach-phase-zv {
+  padding: 32px;
+  background: rgba(0, 255, 255, 0.02);
+  border: 1px solid rgba(0, 255, 255, 0.08);
+}
+
+/* ============================================
+   Builders Page — Steps, Reading, Community
+   ============================================ */
+
+.zv-builders-catchphrase {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.zv-builders-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 32px;
+}
+
+.zv-builders-step {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.zv-builders-step-number {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cyan);
+  line-height: 1.3;
+}
+
+.zv-builders-step-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.zv-builders-step-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.zv-builders-step-detail {
+  font-size: 0.95rem;
+  color: var(--text-tertiary);
+  line-height: 1.7;
+}
+
+.zv-builders-community {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.zv-builders-community-card {
+  padding: 32px;
+  border: 1px solid var(--void-border);
+  background: var(--void-elevated);
+}
+
+.zv-builders-community-card-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.zv-builders-community-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.zv-builders-community-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.zv-builders-quiz-cta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 32px;
+  border: 1px solid var(--void-border);
+  background: var(--void-elevated);
+}
+
+.zv-builders-quiz-cta .zv-body-text {
+  margin-bottom: 0;
+  flex: 1;
+}
+
+/* ============================================
+   Media Page — Featured Cards
+   ============================================ */
+
+.zv-media-featured {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.zv-media-featured-card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  border: 1px solid var(--void-border);
+  background: var(--void-elevated);
+  text-decoration: none;
+  transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out);
+}
+
+.zv-media-featured-card:hover {
+  border-color: rgba(0, 255, 255, 0.2);
+  background: rgba(0, 255, 255, 0.02);
+  color: var(--text-primary);
+  text-shadow: none;
+}
+
+.zv-media-featured-type {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 12px;
+}
+
+.zv-media-featured-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.zv-media-featured-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: auto;
+}
+
+.zv-media-featured-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-top: 20px;
+}
+
+/* ============================================
+   Origin Page — Photo Placeholders
+   ============================================ */
+
+.zv-origin-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.zv-origin-photo-placeholder {
+  aspect-ratio: 4/3;
+  background: var(--void-elevated);
+  border: 1px solid var(--void-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.zv-origin-photo-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.03) 0%, transparent 50%);
+}
+
+.zv-origin-photo-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
 /* --- Engagement Models --- */
 .zv-models {
   display: grid;
@@ -2265,6 +2977,16 @@ a:hover {
     display: flex;
   }
 
+  /* Timeline: stack vertically on mobile */
+  .zv-timeline-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .zv-timeline-narrative {
+    position: static;
+  }
+
   /* Two Paths: stack vertically */
   .zv-paths {
     grid-template-columns: 1fr;
@@ -2328,11 +3050,16 @@ a:hover {
   }
 
   .zv-principle-card {
-    padding: 28px 24px;
+    padding: 20px 20px;
+  }
+
+  .zv-principle-card-row {
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
   }
 
   .zv-principle-card-numeral {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   .zv-principle-card-title {
@@ -2383,6 +3110,68 @@ a:hover {
   /* Inverted callouts: tighter padding on mobile */
   .zv-section--declaration .zv-callout {
     padding: 20px 24px;
+  }
+
+  /* Philosophy: stack columns */
+  .zv-philosophy-split {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .zv-philosophy-what-is-not {
+    position: static;
+  }
+
+  .zv-philosophy-principle {
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
+  }
+
+  /* Approach: stack phase columns */
+  .zv-approach-phase-columns {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .zv-approach-phase-zv {
+    padding: 24px;
+  }
+
+  /* Builders: tighter step layout */
+  .zv-builders-step {
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
+  }
+
+  .zv-builders-community {
+    grid-template-columns: 1fr;
+  }
+
+  .zv-builders-quiz-cta {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  /* Media: stack featured cards */
+  .zv-media-featured {
+    grid-template-columns: 1fr;
+  }
+
+  /* Origin: stack photos */
+  .zv-origin-photos {
+    grid-template-columns: 1fr;
+  }
+
+  /* Terminal: tighter */
+  .zv-terminal-body {
+    padding: 16px;
+    font-size: 12px;
+    max-height: 400px;
+  }
+
+  .zv-terminal-section {
+    padding-top: 80px;
   }
 }
 
@@ -3836,5 +4625,193 @@ a:hover {
   .inv-terminal-line {
     font-size: 11px;
     gap: 8px;
+  }
+}
+
+/* ========================================
+   Start Page
+   ======================================== */
+
+/* --- Announcement Card --- */
+.zv-start-announcement {
+  border: 1px solid var(--cyan);
+  padding: 40px;
+  position: relative;
+}
+
+.zv-start-announcement-placeholder {
+  border-color: var(--void-border);
+  opacity: 0.7;
+}
+
+.zv-start-announcement-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--cyan);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.zv-start-announcement-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.zv-start-announcement-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 700px;
+  margin-bottom: 24px;
+}
+
+.zv-start-announcement-cta {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cyan);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s var(--ease-out);
+}
+
+.zv-start-announcement-cta:hover {
+  color: var(--text-primary);
+}
+
+.zv-start-announcement-cta-disabled {
+  color: var(--text-tertiary);
+  cursor: default;
+}
+
+/* --- Connect Cards --- */
+.zv-start-connect {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.zv-start-connect-card {
+  display: block;
+  text-decoration: none;
+  border: 1px solid var(--void-border);
+  padding: 32px;
+  transition: all 0.3s var(--ease-out);
+}
+
+.zv-start-connect-card:hover {
+  border-color: var(--cyan);
+  background: var(--cyan-subtle);
+}
+
+.zv-start-connect-card-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.zv-start-connect-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.zv-start-connect-card-cta {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cyan);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* --- Big Action CTAs (side by side) --- */
+.zv-start-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.zv-start-action-card {
+  display: block;
+  text-decoration: none;
+  border: 2px solid var(--cyan);
+  padding: 48px 40px;
+  transition: all 0.3s var(--ease-out);
+  position: relative;
+}
+
+.zv-start-action-card:hover {
+  background: var(--cyan-subtle);
+  box-shadow: 0 0 40px var(--cyan-glow);
+}
+
+.zv-start-action-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--cyan);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.zv-start-action-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.zv-start-action-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.zv-start-action-cta {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cyan);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s var(--ease-out);
+}
+
+.zv-start-action-card:hover .zv-start-action-cta {
+  color: var(--text-primary);
+}
+
+/* --- Start Page Responsive --- */
+@media (max-width: 768px) {
+  .zv-start-connect {
+    grid-template-columns: 1fr;
+  }
+
+  .zv-start-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .zv-start-action-card {
+    padding: 32px 24px;
+  }
+
+  .zv-start-announcement {
+    padding: 24px;
   }
 }

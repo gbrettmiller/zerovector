@@ -40,24 +40,28 @@ function ChevronIcon({ size = 20, className = '' }) {
 function PrincipleCard({ principle, open, onToggle }) {
   return (
     <div className={`zv-principle-card ${open ? 'zv-principle-card--open' : ''}`}>
-      <div className="zv-principle-card-header">
+      <div className="zv-principle-card-row">
         <div className="zv-principle-card-numeral">{principle.numeral}</div>
-        <PrincipleShare title={principle.title} body={principle.body} />
+        <div className="zv-principle-card-content">
+          <div className="zv-principle-card-header">
+            <h3>
+              <button
+                className="zv-principle-card-toggle"
+                onClick={onToggle}
+                aria-expanded={open}
+              >
+                <span className="zv-principle-card-title">{principle.title}</span>
+                <ChevronIcon
+                  size={20}
+                  className={`zv-principle-card-chevron ${open ? 'zv-principle-card-chevron--open' : ''}`}
+                />
+              </button>
+            </h3>
+            <PrincipleShare title={principle.title} body={principle.body} />
+          </div>
+          <p className="zv-principle-card-body">{principle.body}</p>
+        </div>
       </div>
-      <h3>
-        <button
-          className="zv-principle-card-toggle"
-          onClick={onToggle}
-          aria-expanded={open}
-        >
-          <span className="zv-principle-card-title">{principle.title}</span>
-          <ChevronIcon
-            size={20}
-            className={`zv-principle-card-chevron ${open ? 'zv-principle-card-chevron--open' : ''}`}
-          />
-        </button>
-      </h3>
-      <p className="zv-principle-card-body">{principle.body}</p>
       {principle.detail && (
         <div className={`zv-principle-card-detail ${open ? 'zv-principle-card-detail--open' : ''}`}>
           <div className="zv-principle-card-detail-inner">
@@ -237,37 +241,50 @@ function ManifestoPage() {
           <Animate>
             <SectionHeader number={home.timeline.number} title={home.timeline.title} subtitle={home.timeline.subtitle} />
           </Animate>
-          <div className="zv-timeline">
-            {home.timeline.entries.map((entry, i) => (
-              <Animate key={i}>
-                <div className="zv-timeline-entry">
-                  <div className="zv-timeline-year">{entry.year}</div>
-                  <div className="zv-timeline-tool">{entry.tool}</div>
-                  <div className="zv-timeline-desc">{entry.description}</div>
-                </div>
-              </Animate>
-            ))}
+          <div className="zv-timeline-layout">
+            <div className="zv-timeline-narrative">
+              {home.timeline.narrative.map((paragraph, i) => (
+                <Animate key={i} delay={Math.min(i + 1, 3)}>
+                  <p className="zv-body-text">{paragraph}</p>
+                </Animate>
+              ))}
+            </div>
+            <div className="zv-timeline">
+              {home.timeline.entries.map((entry, i) => (
+                <Animate key={i}>
+                  <div className="zv-timeline-entry">
+                    <div className="zv-timeline-year">{entry.year}</div>
+                    <div className="zv-timeline-milestone">{entry.milestone}</div>
+                    <div className="zv-timeline-desc">{entry.description}</div>
+                  </div>
+                </Animate>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Pipeline */}
+      {/* 004 — Pipeline */}
       <section className="zv-section zv-section--pipeline">
         <div className="zv-container">
           <Animate>
-            <h2 className="zv-section-title">{home.pipeline.title}</h2>
-            <p className="zv-section-subtitle">{home.pipeline.header}</p>
+            <SectionHeader number={home.pipeline.number} title={home.pipeline.title} subtitle={home.pipeline.header} />
           </Animate>
+          {home.pipeline.intro.map((paragraph, i) => (
+            <Animate key={i} delay={Math.min(i + 1, 2)}>
+              <p className="zv-body-text">{paragraph}</p>
+            </Animate>
+          ))}
           <div className="zv-pipeline" style={{ marginTop: 48 }}>
             {home.pipeline.phases.map((phase, i) => (
               <Animate key={i}>
                 <div className="zv-pipeline-phase">
                   <div className="zv-pipeline-label">{phase.name}</div>
-                  <div>
+                  <div className="zv-pipeline-card zv-pipeline-card-old">
                     <div className="zv-pipeline-tag zv-pipeline-tag-old">Before</div>
                     <div className="zv-pipeline-old">{phase.old}</div>
                   </div>
-                  <div>
+                  <div className="zv-pipeline-card zv-pipeline-card-new">
                     <div className="zv-pipeline-tag zv-pipeline-tag-new">Zero-Vector</div>
                     <div className="zv-pipeline-new">{phase.new}</div>
                   </div>
@@ -278,7 +295,7 @@ function ManifestoPage() {
         </div>
       </section>
 
-      {/* 004 — The Seven Principles */}
+      {/* 005 — The Seven Principles */}
       <section className="zv-section zv-section--principles">
         <div className="zv-container">
           <Animate>
@@ -292,6 +309,9 @@ function ManifestoPage() {
               </button>
             </div>
           </Animate>
+          <Animate delay={1}>
+            <p className="zv-body-text zv-principles-intro">{home.principles.intro}</p>
+          </Animate>
           <div className="zv-principles-grid">
             {home.principles.items.map((p, i) => (
               <Animate key={i}>
@@ -303,10 +323,16 @@ function ManifestoPage() {
               </Animate>
             ))}
           </div>
+          <Animate>
+            <div className="zv-principle-zero-home">
+              <div className="zv-principle-zero-home-numeral">PRINCIPLE ZERO</div>
+              <div className="zv-principle-zero-home-text">{home.principles.principle_zero}</div>
+            </div>
+          </Animate>
         </div>
       </section>
 
-      {/* 005 — What This Is Not. What This Is. */}
+      {/* 006 — What This Is Not. What This Is. */}
       <section className="zv-section zv-section--contrasts">
         <div className="zv-container">
           <Animate>
@@ -333,31 +359,7 @@ function ManifestoPage() {
         </div>
       </section>
 
-      {/* 006 — Mark III */}
-      <section className="zv-section zv-section--markiii">
-        <div className="zv-container">
-          <Animate>
-            <SectionHeader number={home.markiii.number} title={home.markiii.title} />
-          </Animate>
-          {home.markiii.paragraphs.map((paragraph, i) => (
-            <Animate key={i} delay={Math.min(i + 1, 4)}>
-              <p className="zv-body-text">{paragraph}</p>
-            </Animate>
-          ))}
-          <Animate>
-            <div className="zv-suits">
-              {home.markiii.suits.map((suit, i) => (
-                <div key={i} className="zv-suit">
-                  <div className="zv-suit-mark">Mark {suit.mark}</div>
-                  <div className="zv-suit-label">{suit.label}</div>
-                </div>
-              ))}
-            </div>
-          </Animate>
-        </div>
-      </section>
-
-      {/* 007 — Closing */}
+      {/* 007 — Set Coordinates */}
       <section className="zv-section zv-section--closing zv-closing">
         <div className="zv-container">
           <Animate>
@@ -369,30 +371,30 @@ function ManifestoPage() {
           <Animate delay={2}>
             <p className="zv-body-text">{home.closing.body}</p>
           </Animate>
-        </div>
-      </section>
-
-      {/* Two Paths CTA */}
-      <section className="zv-section zv-section--paths">
-        <div className="zv-container">
-          <div className="zv-paths">
-            <Animate>
-              <Link to={home.paths.builders.link} className="zv-path-card">
-                <div className="zv-path-eyebrow">{home.paths.builders.eyebrow}</div>
-                <div className="zv-path-title">{home.paths.builders.title}</div>
-                <p className="zv-path-desc">{home.paths.builders.description}</p>
-                <span className="zv-path-cta">{home.paths.builders.cta} <ArrowIcon size={16} /></span>
+          <Animate delay={3}>
+            <div className="zv-paths zv-closing-paths">
+              <Link to={home.closing.paths.builders.link} className="zv-path-card">
+                <div className="zv-path-eyebrow">{home.closing.paths.builders.eyebrow}</div>
+                <div className="zv-path-title">{home.closing.paths.builders.title}</div>
+                <p className="zv-path-desc">{home.closing.paths.builders.description}</p>
+                <span className="zv-path-cta">{home.closing.paths.builders.cta} <ArrowIcon size={16} /></span>
               </Link>
-            </Animate>
-            <Animate delay={1}>
-              <Link to={home.paths.leaders.link} className="zv-path-card">
-                <div className="zv-path-eyebrow">{home.paths.leaders.eyebrow}</div>
-                <div className="zv-path-title">{home.paths.leaders.title}</div>
-                <p className="zv-path-desc">{home.paths.leaders.description}</p>
-                <span className="zv-path-cta">{home.paths.leaders.cta} <ArrowIcon size={16} /></span>
+              <Link to={home.closing.paths.leaders.link} className="zv-path-card">
+                <div className="zv-path-eyebrow">{home.closing.paths.leaders.eyebrow}</div>
+                <div className="zv-path-title">{home.closing.paths.leaders.title}</div>
+                <p className="zv-path-desc">{home.closing.paths.leaders.description}</p>
+                <span className="zv-path-cta">{home.closing.paths.leaders.cta} <ArrowIcon size={16} /></span>
               </Link>
-            </Animate>
-          </div>
+            </div>
+          </Animate>
+          <Animate delay={4}>
+            <div className="zv-closing-substack">
+              <p className="zv-closing-substack-text">{home.closing.substack.text}</p>
+              <a href={home.closing.substack.url} target="_blank" rel="noopener noreferrer" className="zv-cta">
+                {home.closing.substack.cta} <ArrowIcon size={14} />
+              </a>
+            </div>
+          </Animate>
         </div>
       </section>
 

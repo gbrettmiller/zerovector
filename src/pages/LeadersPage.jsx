@@ -21,7 +21,7 @@ function LeadersPage() {
   useEffect(() => { document.title = 'For Leaders — Zero-Vector Design'; }, []);
 
   return (
-    <div className="zv-page">
+    <div className="zv-page zv-info-page">
       <VectorField />
       <Nav />
 

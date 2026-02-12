@@ -11,6 +11,7 @@ import OpenVectorPage from './pages/OpenVectorPage';
 import InvestiturePage from './pages/InvestiturePage';
 import AskPage from './pages/AskPage';
 import QuizPage from './pages/QuizPage';
+import StartPage from './pages/StartPage';
 
 function App() {
   return (
@@ -18,17 +19,20 @@ function App() {
       <Route element={<SiteLayout />}>
         <Route path="/" element={<ManifestoPage />} />
         <Route path="/philosophy" element={<PhilosophyPage />} />
-        <Route path="/pipeline" element={<PipelinePage />} />
+        <Route path="/approach" element={<PipelinePage />} />
         <Route path="/for-builders" element={<BuildersPage />} />
         <Route path="/for-leaders" element={<LeadersPage />} />
-        <Route path="/reading" element={<ReadingPage />} />
+        <Route path="/media" element={<ReadingPage />} />
         <Route path="/origin" element={<OriginPage />} />
+        <Route path="/start" element={<StartPage />} />
         <Route path="/ask" element={<AskPage />} />
         <Route path="/quiz" element={<QuizPage />} />
         {/* Redirects from old routes */}
         <Route path="/about" element={<Navigate to="/philosophy" replace />} />
         <Route path="/join" element={<Navigate to="/" replace />} />
-        <Route path="/resources" element={<Navigate to="/reading" replace />} />
+        <Route path="/pipeline" element={<Navigate to="/approach" replace />} />
+        <Route path="/reading" element={<Navigate to="/media" replace />} />
+        <Route path="/resources" element={<Navigate to="/media" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
       <Route path="/open" element={<OpenVectorPage />} />

@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 import VectorField from '../components/VectorField';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
-import { ExternalLinkIcon } from '../components/icons';
+import { ExternalLinkIcon, ArrowIcon } from '../components/icons';
 import en from '../content/en';
 
 function Animate({ children, className = '', delay = 0 }) {
@@ -22,38 +23,44 @@ function BuildersPage() {
   useEffect(() => { document.title = 'For Builders — Zero-Vector Design'; }, []);
 
   return (
-    <div className="zv-page">
+    <div className="zv-page zv-info-page">
       <VectorField />
       <Nav />
 
       {/* Hero */}
       <PageHero eyebrow={builders.eyebrow} title={builders.title} subtitle={builders.subtitle} />
 
-      {/* Intro */}
+      {/* Intro + Catchphrase */}
       <section className="zv-section">
         <div className="zv-container">
+          <Animate>
+            <blockquote className="zv-callout zv-builders-catchphrase">{builders.catchphrase}</blockquote>
+          </Animate>
           {builders.intro.map((p, i) => (
-            <Animate key={i} delay={Math.min(i + 1, 4)}>
+            <Animate key={i} delay={Math.min(i + 1, 3)}>
               <p className="zv-body-text">{p}</p>
             </Animate>
           ))}
         </div>
       </section>
 
-      {/* Getting Started */}
+      {/* Getting Started — Expanded Steps */}
       <section className="zv-section">
         <div className="zv-container">
           <Animate>
             <h2 className="zv-section-title">{builders.getting_started.title}</h2>
           </Animate>
-          <div className="zv-principles">
+          <div className="zv-builders-steps">
             {builders.getting_started.steps.map((step, i) => (
               <Animate key={i}>
-                <div className="zv-principle">
-                  <div className="zv-principle-number">{step.number}</div>
-                  <div className="zv-principle-content">
-                    <div className="zv-principle-title">{step.title}</div>
-                    <div className="zv-principle-desc">{step.description}</div>
+                <div className="zv-builders-step">
+                  <div className="zv-builders-step-number">{step.number}</div>
+                  <div className="zv-builders-step-content">
+                    <h3 className="zv-builders-step-title">{step.title}</h3>
+                    <p className="zv-builders-step-desc">{step.description}</p>
+                    {step.detail && (
+                      <p className="zv-builders-step-detail">{step.detail}</p>
+                    )}
                   </div>
                 </div>
               </Animate>
@@ -62,16 +69,24 @@ function BuildersPage() {
         </div>
       </section>
 
-      {/* Boilerplate */}
+      {/* Reading List */}
       <section className="zv-section">
         <div className="zv-container">
           <Animate>
-            <div className="zv-coming-soon-card">
-              <h2 className="zv-section-title">{builders.boilerplate.title}</h2>
-              <p className="zv-body-text">{builders.boilerplate.description}</p>
-              <div className="zv-coming-soon-badge">{builders.boilerplate.status}</div>
-            </div>
+            <h2 className="zv-section-title">{builders.reading_list.title}</h2>
+            <p className="zv-section-subtitle">{builders.reading_list.subtitle}</p>
           </Animate>
+          <div className="zv-resource-list" style={{ marginTop: 32 }}>
+            {builders.reading_list.books.map((book, i) => (
+              <Animate key={i}>
+                <a href={book.url} target="_blank" rel="noopener noreferrer" className="zv-resource-card">
+                  <div className="zv-resource-card-type">Book</div>
+                  <div className="zv-resource-card-title">{book.title} <ExternalLinkIcon size={14} /></div>
+                  <div className="zv-resource-card-desc">{book.author} — {book.description}</div>
+                </a>
+              </Animate>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -102,6 +117,47 @@ function BuildersPage() {
               </Animate>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Community */}
+      <section className="zv-section">
+        <div className="zv-container">
+          <Animate>
+            <h2 className="zv-section-title">{builders.community.title}</h2>
+            <p className="zv-section-subtitle">{builders.community.subtitle}</p>
+          </Animate>
+          <div className="zv-builders-community" style={{ marginTop: 32 }}>
+            {builders.community.channels.map((channel, i) => (
+              <Animate key={i}>
+                <div className="zv-builders-community-card">
+                  <h3 className="zv-builders-community-card-title">{channel.title}</h3>
+                  <p className="zv-builders-community-card-desc">{channel.description}</p>
+                  {channel.url.startsWith('/') ? (
+                    <Link to={channel.url} className="zv-builders-community-card-cta">
+                      {channel.cta} <ArrowIcon size={14} />
+                    </Link>
+                  ) : (
+                    <a href={channel.url} target="_blank" rel="noopener noreferrer" className="zv-builders-community-card-cta">
+                      {channel.cta} <ExternalLinkIcon size={14} />
+                    </a>
+                  )}
+                </div>
+              </Animate>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quiz CTA */}
+      <section className="zv-section">
+        <div className="zv-container">
+          <Animate>
+            <div className="zv-builders-quiz-cta">
+              <p className="zv-body-text">Not sure where you stand? Take the quiz.</p>
+              <Link to="/quiz" className="zv-cta zv-cta-outline">Am I Vibe Coding? <ArrowIcon size={14} /></Link>
+            </div>
+          </Animate>
         </div>
       </section>
 

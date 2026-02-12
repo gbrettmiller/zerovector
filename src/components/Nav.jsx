@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { SubstackIcon, LinkedInIcon } from './icons';
+
 
 const navLinks = [
   { to: '/philosophy', label: 'Philosophy' },
-  { to: '/pipeline', label: 'Pipeline' },
+  { to: '/approach', label: 'Approach' },
   { to: '/for-builders', label: 'For Builders' },
   { to: '/for-leaders', label: 'For Leaders' },
-  { to: '/reading', label: 'Reading' },
+  { to: '/media', label: 'Media' },
   { to: '/origin', label: 'The Origin' },
   { to: '/open', label: 'Open Vector' },
   { to: '/ask', label: 'Ask' },
-  { to: '/quiz', label: 'Quiz' },
 ];
 
 function Nav() {
@@ -34,25 +33,12 @@ function Nav() {
               {label}
             </Link>
           ))}
-          <div className="zv-nav-divider" />
-          <a
-            href="https://eflowers.substack.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="zv-nav-icon"
-            aria-label="Substack"
+          <Link
+            to="/start"
+            className={`zv-nav-start ${pathname === '/start' ? 'zv-nav-start-active' : ''}`}
           >
-            <SubstackIcon size={18} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/helloeflowers/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="zv-nav-icon"
-            aria-label="LinkedIn"
-          >
-            <LinkedInIcon size={18} />
-          </a>
+            Start
+          </Link>
         </div>
 
         {/* Mobile hamburger */}
@@ -80,14 +66,13 @@ function Nav() {
               {label}
             </Link>
           ))}
-          <div className="zv-nav-mobile-social">
-            <a href="https://eflowers.substack.com" target="_blank" rel="noopener noreferrer" className="zv-nav-icon" aria-label="Substack">
-              <SubstackIcon size={18} />
-            </a>
-            <a href="https://www.linkedin.com/in/helloeflowers/" target="_blank" rel="noopener noreferrer" className="zv-nav-icon" aria-label="LinkedIn">
-              <LinkedInIcon size={18} />
-            </a>
-          </div>
+          <Link
+            to="/start"
+            className={`zv-nav-mobile-link zv-nav-start-mobile ${pathname === '/start' ? 'zv-nav-link-active' : ''}`}
+            onClick={() => setMenuOpen(false)}
+          >
+            Start
+          </Link>
         </div>
       )}
     </nav>
