@@ -94,8 +94,15 @@ export class CRTShader {
           return;
         }
 
-        // --- Sample source alpha to preserve transparency ---
-        float srcAlpha = texture2D(u_texture, uv).a;
+        // --- Sample source with alpha ---
+        vec4 src = texture2D(u_texture, uv);
+        float srcAlpha = src.a;
+
+        // Early out for fully transparent pixels — skip all CRT processing
+        if (srcAlpha < 0.005) {
+          gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);
+          return;
+        }
 
         // --- Chromatic aberration (RGB split) ---
         vec3 col;
@@ -123,7 +130,6 @@ export class CRTShader {
         col *= 1.0 - u_scanline * (1.0 - scan);
 
         // --- Phosphor mask (aperture grille — RGB vertical stripes) ---
-        // 6px wide pattern so it's visible on retina/HiDPI
         float maskX = mod(gl_FragCoord.x, 6.0);
         vec3 mask = vec3(0.75);
         if (maskX < 2.0) mask.r = 1.0;
@@ -137,9 +143,9 @@ export class CRTShader {
         vigFactor = pow(vigFactor, u_vignette);
         col *= vigFactor;
 
-        // --- Static noise ---
+        // --- Static noise (only where content exists) ---
         float n = fract(sin(dot(uv + vec2(u_time * 0.17), vec2(12.9898, 78.233))) * 43758.5453);
-        col += (n - 0.5) * u_noise;
+        col += (n - 0.5) * u_noise * srcAlpha;
 
         // --- Flicker ---
         col *= 1.0 + u_flicker * sin(u_time * 8.0);
@@ -147,12 +153,7 @@ export class CRTShader {
         // --- Brightness ---
         col *= u_brightness;
 
-        // Preserve source transparency — empty areas stay transparent
-        float alpha = srcAlpha;
-        // Boost alpha slightly where CRT effects add content (bloom, noise)
-        alpha = max(alpha, length(col) > 0.01 ? min(length(col) * 4.0, 1.0) : 0.0);
-
-        gl_FragColor = vec4(col, alpha);
+        gl_FragColor = vec4(col, srcAlpha);
       }
     `;
 
