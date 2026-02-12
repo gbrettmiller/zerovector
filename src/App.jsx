@@ -12,6 +12,7 @@ import InvestiturePage from './pages/InvestiturePage';
 import AskPage from './pages/AskPage';
 import QuizPage from './pages/QuizPage';
 import StartPage from './pages/StartPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
         <Route path="/pipeline" element={<Navigate to="/approach" replace />} />
         <Route path="/reading" element={<Navigate to="/media" replace />} />
         <Route path="/resources" element={<Navigate to="/media" replace />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
       <Route path="/open" element={<OpenVectorPage />} />
       <Route path="/investiture" element={<InvestiturePage />} />

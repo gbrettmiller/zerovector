@@ -114,7 +114,7 @@ function ReadingPage() {
         </div>
       </section>
 
-      {/* People to Follow — Placeholder */}
+      {/* People to Follow */}
       {media.voices.items.length > 0 && (
         <section className="zv-section">
           <div className="zv-container">
@@ -122,6 +122,16 @@ function ReadingPage() {
               <h2 className="zv-section-title">{media.voices.title}</h2>
               <p className="zv-section-subtitle">{media.voices.subtitle}</p>
             </Animate>
+            <div className="zv-resource-list" style={{ marginTop: 32 }}>
+              {media.voices.items.map((person, i) => (
+                <Animate key={i}>
+                  <a href={person.url} target="_blank" rel="noopener noreferrer" className="zv-resource-card">
+                    <div className="zv-resource-card-title">{person.name} <ExternalLinkIcon size={14} /></div>
+                    <div className="zv-resource-card-desc">{person.description}</div>
+                  </a>
+                </Animate>
+              ))}
+            </div>
           </div>
         </section>
       )}

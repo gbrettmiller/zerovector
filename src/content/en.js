@@ -658,29 +658,28 @@ const en = {
     title: 'Transform Your Organization',
     subtitle: 'You lead a team, a department, or a company. Zero-Vector is how you close the gap between vision and delivery at scale.',
 
-    // TODO: Adoni writes this
     intro: [
       'Every organization has the same problem: the gap between what leadership envisions and what actually gets built. The longer the pipeline, the wider the gap. The more handoffs, the more drift.',
       'Zero-Vector Design is not just a practitioner skill. It is an organizational transformation. When your people can go from concept to customer with zero intermediaries, everything changes: speed, quality, alignment, and morale.',
+      'The organizations that move first will define the next era of product development. The ones that wait will spend years trying to catch up. This is not disruption from the outside. It is evolution from within.',
     ],
 
-    // TODO: Adoni writes this
     czvo: {
       title: 'The Chief Zero-Vector Officer',
       description: [
         'A CZVO is the person who owns the transformation. Not a new title for the CTO. Not a renamed CDO. A distinct role focused on collapsing the concept-to-customer pipeline across the entire organization.',
+        'Day to day, the CZVO audits your workflows for unnecessary handoffs, identifies where signal degrades between intent and artifact, pilots agent-first teams on real projects, and builds the internal playbook so the transformation scales beyond any one person.',
         'The CZVO identifies where handoffs create drift. Where translation layers lose signal. Where the gap between vision and artifact costs the organization time, money, and talent. Then they close those gaps with agent-first workflows.',
         'This role does not exist yet at most organizations. That is precisely why you need one.',
       ],
     },
 
-    // TODO: Adoni writes this
     models: {
       title: 'Engagement Models',
       options: [
-        { name: 'Advisory', description: 'Strategic guidance on adopting Zero-Vector practices. Regular sessions, async support, roadmap alignment. Best for organizations that want to self-execute.' },
-        { name: 'Embedded', description: 'Hands-on Zero-Vector practitioner embedded in your team for a sprint or a quarter. Best for organizations that want to learn by doing.' },
-        { name: 'Fractional CZVO', description: 'Part-time Chief Zero-Vector Officer. Own the transformation strategy, build the internal playbook, train the team. Best for organizations ready to commit.' },
+        { name: 'Advisory', description: 'Strategic guidance on adopting Zero-Vector practices. Regular sessions, async support, roadmap alignment. You get a thinking partner who has done this before — someone to pressure-test your transformation plan and keep you honest about what is actually changing.', outcome: 'Best for organizations that want to self-execute with expert guidance.' },
+        { name: 'Embedded', description: 'A hands-on Zero-Vector practitioner embedded in your team for a sprint or a quarter. They work alongside your people on real projects, demonstrating the workflow in practice. Your team learns by shipping, not by reading a playbook.', outcome: 'Best for organizations that want to learn by doing.' },
+        { name: 'Fractional CZVO', description: 'A part-time Chief Zero-Vector Officer who owns the transformation strategy end to end. They build the internal playbook, train the team, establish agent-first workflows, and measure the results. This is a commitment to real organizational change.', outcome: 'Best for organizations ready to transform how they build.' },
       ],
     },
 
@@ -745,7 +744,13 @@ const en = {
     voices: {
       title: 'People to Follow',
       subtitle: 'Other voices exploring the intersection of design, AI, and building.',
-      items: [],
+      items: [
+        { name: 'Ethan Mollick', description: 'Wharton professor, author of Co-Intelligence. The most rigorous thinker on what AI actually changes about work.', url: 'https://www.oneusefulthing.org/' },
+        { name: 'Simon Willison', description: 'Developer, datasette creator. Prolific builder and documenter of what is actually possible with LLMs right now.', url: 'https://simonwillison.net/' },
+        { name: 'Maggie Appleton', description: 'Designer and anthropologist. Thinks deeply about how interfaces shape understanding.', url: 'https://maggieappleton.com/' },
+        { name: 'Andrej Karpathy', description: 'Former Tesla AI lead, OpenAI founding member. Explains AI from first principles.', url: 'https://karpathy.ai/' },
+        { name: 'Swyx', description: 'Builder, writer, community leader. Latent Space podcast covers the AI engineering frontier.', url: 'https://www.latent.space/' },
+      ],
     },
   },
 
@@ -980,11 +985,11 @@ const en = {
     ],
 
     announcement: {
-      title: 'Read the Announcement',
-      description: 'The article that started it all. What Zero-Vector Design is, why it exists, and what it means for the future of making things.',
-      cta: 'Coming Soon',
-      url: '#',
-      placeholder: true,
+      title: 'Zero-Vector Design Is Live',
+      description: 'The manifesto, the approach, the curriculum, the tools. Everything is here. Start with the philosophy and work your way out.',
+      cta: 'Read the Manifesto',
+      url: '/',
+      placeholder: false,
     },
 
     connect: {
@@ -1021,6 +1026,23 @@ const en = {
         url: '/open',
       },
     },
+  },
+
+  // ============================================
+  // QUIZ (/quiz)
+  // ============================================
+
+  quiz: {
+    eyebrow: 'Assessment',
+    title: 'Am I Vibe Coding?',
+    subtitle: 'Answer five questions about your workflow. The manifesto will tell you where you stand.',
+    questions: [
+      { id: 'q1', label: '01', question: 'How do you go from idea to shipped product?', placeholder: 'Describe your typical workflow from concept to launch...' },
+      { id: 'q2', label: '02', question: 'What happens between design and implementation?', placeholder: 'Is there a handoff? A spec? A conversation? Nothing?' },
+      { id: 'q3', label: '03', question: 'How do you use AI in your workflow?', placeholder: 'Do you use AI agents? For what? How much direction do you give them?' },
+      { id: 'q4', label: '04', question: 'How many people or roles touch a feature before it ships?', placeholder: 'Designer, engineer, PM, QA... who is in the chain?' },
+      { id: 'q5', label: '05', question: 'What is your biggest frustration with your current process?', placeholder: 'Where does signal get lost? What makes you want to scream?' },
+    ],
   },
 
   investiture: {

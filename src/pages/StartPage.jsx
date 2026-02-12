@@ -69,21 +69,17 @@ function StartPage() {
         </div>
       </section>
 
-      {/* Announcement Placeholder */}
+      {/* Announcement */}
       <section className="zv-section">
         <div className="zv-container">
           <Animate>
-            <div className={`zv-start-announcement ${start.announcement.placeholder ? 'zv-start-announcement-placeholder' : ''}`}>
+            <div className="zv-start-announcement">
               <div className="zv-start-announcement-label">Featured</div>
               <h3 className="zv-start-announcement-title">{start.announcement.title}</h3>
               <p className="zv-start-announcement-desc">{start.announcement.description}</p>
-              {start.announcement.placeholder ? (
-                <span className="zv-start-announcement-cta zv-start-announcement-cta-disabled">{start.announcement.cta}</span>
-              ) : (
-                <a href={start.announcement.url} target="_blank" rel="noopener noreferrer" className="zv-start-announcement-cta">
-                  {start.announcement.cta} <ExternalLinkIcon size={14} />
-                </a>
-              )}
+              <Link to={start.announcement.url} className="zv-start-announcement-cta">
+                {start.announcement.cta} <ArrowIcon size={14} />
+              </Link>
             </div>
           </Animate>
         </div>
