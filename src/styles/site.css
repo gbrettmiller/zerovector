@@ -81,6 +81,15 @@ a:hover {
   position: relative;
   z-index: 1;
   min-height: 100vh;
+  transition: opacity 0.25s ease;
+}
+
+.zv-page-enter {
+  opacity: 0;
+}
+
+.zv-page-active {
+  opacity: 1;
 }
 
 .zv-container {

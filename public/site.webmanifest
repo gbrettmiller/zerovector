@@ -1,0 +1,16 @@
+{
+  "name": "Zero-Vector Design",
+  "short_name": "Zero Vector",
+  "description": "A design philosophy for the age of AI. From intent to artifact, directly.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#181818",
+  "theme_color": "#181818",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

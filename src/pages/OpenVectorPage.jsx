@@ -1,19 +1,10 @@
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useInView } from '../hooks/useInView';
 import NotifyForm from '../components/NotifyForm';
+import Animate from '../components/Animate';
 import useSEO from '../hooks/useSEO';
 import '../styles/site.css';
 import en from '../content/en';
-
-function Animate({ children, className = '', delay = 0 }) {
-  const [ref, isVisible] = useInView();
-  return (
-    <div ref={ref} className={`zv-animate ${isVisible ? 'zv-visible' : ''} ${delay ? `zv-animate-delay-${delay}` : ''} ${className}`}>
-      {children}
-    </div>
-  );
-}
 
 const { open } = en;
 

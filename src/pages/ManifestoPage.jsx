@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useInView } from '../hooks/useInView';
 import VectorField from '../components/VectorField';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
@@ -9,20 +8,9 @@ import DecryptText from '../components/DecryptText';
 import { ArrowIcon } from '../components/icons';
 import BootSequence from '../components/BootSequence';
 import NotifyForm from '../components/NotifyForm';
+import Animate from '../components/Animate';
 import useSEO from '../hooks/useSEO';
 import en from '../content/en';
-
-function Animate({ children, className = '', delay = 0 }) {
-  const [ref, isVisible] = useInView();
-  return (
-    <div
-      ref={ref}
-      className={`zv-animate ${isVisible ? 'zv-visible' : ''} ${delay ? `zv-animate-delay-${delay}` : ''} ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
 
 function ChevronIcon({ size = 20, className = '' }) {
   return (
