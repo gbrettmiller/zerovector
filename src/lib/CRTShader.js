@@ -236,6 +236,7 @@ export class CRTShader {
     // Upload source canvas directly as texture (no getImageData!)
     gl.bindTexture(gl.TEXTURE_2D, this.texture);
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, sourceCanvas);
 
     gl.viewport(0, 0, this.canvas.width, this.canvas.height);
