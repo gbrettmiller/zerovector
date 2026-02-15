@@ -6,8 +6,10 @@ const { learn } = en;
 
 function LearnNav({ sidebarOpen, onToggle }) {
   const { pathname } = useLocation();
-  const isCurriculum = pathname.includes('/curriculum') || pathname === '/open/learn';
+  const isApproach = pathname.includes('/approach') && pathname.includes('/open/learn');
+  const isCurriculum = (pathname.includes('/curriculum') || pathname === '/open/learn') && !isApproach;
   const isResources = pathname.includes('/resources');
+  const isChat = pathname.includes('/chat');
 
   return (
     <nav className="ovl-nav">
@@ -34,10 +36,22 @@ function LearnNav({ sidebarOpen, onToggle }) {
             Curriculum
           </Link>
           <Link
+            to="/open/learn/approach"
+            className={`ovl-nav-tab ${isApproach ? 'ovl-nav-tab--active' : ''}`}
+          >
+            Approach
+          </Link>
+          <Link
             to="/open/learn/resources"
             className={`ovl-nav-tab ${isResources ? 'ovl-nav-tab--active' : ''}`}
           >
             Go Further
+          </Link>
+          <Link
+            to="/open/learn/chat"
+            className={`ovl-nav-tab ${isChat ? 'ovl-nav-tab--active' : ''}`}
+          >
+            Chat
           </Link>
         </div>
         <div className="ovl-nav-right">

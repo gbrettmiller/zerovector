@@ -1,15 +1,18 @@
 import { Link, useLocation } from 'react-router-dom';
 
-function LearnBreadcrumbs({ levelSlug, lessonSlug, levels }) {
+function LearnBreadcrumbs({ levelSlug, lessonSlug, levels, guideSlug, approach }) {
   const { pathname } = useLocation();
   const isCurriculum = pathname.includes('/curriculum');
   const isResources = pathname.includes('/resources');
+  const isChat = pathname.includes('/chat');
+  const isApproach = pathname.includes('/approach') && pathname.includes('/open/learn');
 
   const level = levels.find(l => l.slug === levelSlug);
   const lesson = level?.lessons.find(l => l.slug === lessonSlug);
+  const guide = isApproach && guideSlug ? approach?.guides?.find(g => g.slug === guideSlug) : null;
 
   // Hub page — no breadcrumbs
-  if (!isCurriculum && !isResources) return null;
+  if (!isCurriculum && !isResources && !isChat && !isApproach) return null;
 
   return (
     <nav className="ovl-breadcrumbs" aria-label="Breadcrumb">
@@ -28,6 +31,28 @@ function LearnBreadcrumbs({ levelSlug, lessonSlug, levels }) {
         <>
           <span className="ovl-crumb-sep">/</span>
           <span className="ovl-crumb ovl-crumb--current">Go Further</span>
+        </>
+      )}
+      {isChat && (
+        <>
+          <span className="ovl-crumb-sep">/</span>
+          <span className="ovl-crumb ovl-crumb--current">Chat</span>
+        </>
+      )}
+      {isApproach && (
+        <>
+          <span className="ovl-crumb-sep">/</span>
+          {guide ? (
+            <Link to="/open/learn/approach" className="ovl-crumb">Approach</Link>
+          ) : (
+            <span className="ovl-crumb ovl-crumb--current">Approach</span>
+          )}
+        </>
+      )}
+      {guide && (
+        <>
+          <span className="ovl-crumb-sep">/</span>
+          <span className="ovl-crumb ovl-crumb--current">{guide.title}</span>
         </>
       )}
       {level && (

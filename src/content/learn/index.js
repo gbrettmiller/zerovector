@@ -13,6 +13,7 @@ import theMedium from './02-the-medium';
 import thePipeline from './03-the-pipeline';
 import orchestration from './04-orchestration';
 import auteur from './05-auteur';
+import approach from './approach';
 
 const learn = {
   nav: {
@@ -35,6 +36,8 @@ const learn = {
     orchestration,
     auteur,
   ],
+
+  approach,
 };
 
 export default learn;

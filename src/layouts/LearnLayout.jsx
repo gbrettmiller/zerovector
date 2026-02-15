@@ -10,7 +10,7 @@ import en from '../content/en';
 const { learn } = en;
 
 function LearnLayout() {
-  const { levelSlug, lessonSlug } = useParams();
+  const { levelSlug, lessonSlug, guideSlug } = useParams();
   const { pathname } = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -70,6 +70,19 @@ function LearnLayout() {
     l => l.levelSlug === levelSlug && l.lessonSlug === lessonSlug
   );
 
+  // Flat guide list for approach pagination
+  const flatGuides = useMemo(() => {
+    return (learn.approach?.guides || []).map(guide => ({
+      guideSlug: guide.slug,
+      lessonTitle: guide.title,
+      path: `/open/learn/approach/${guide.slug}`,
+    }));
+  }, []);
+
+  const currentGuideIndex = flatGuides.findIndex(
+    g => g.guideSlug === guideSlug
+  );
+
   return (
     <div className="ovl-page">
       <LearnNav
@@ -81,6 +94,8 @@ function LearnLayout() {
           levels={learn.levels}
           activeLevelSlug={levelSlug}
           activeLessonSlug={lessonSlug}
+          approach={learn.approach}
+          activeGuideSlug={guideSlug}
           open={sidebarOpen}
           onClose={() => setSidebarOpen(false)}
         />
@@ -89,12 +104,20 @@ function LearnLayout() {
             levelSlug={levelSlug}
             lessonSlug={lessonSlug}
             levels={learn.levels}
+            guideSlug={guideSlug}
+            approach={learn.approach}
           />
-          <Outlet context={{ learn, levelSlug, lessonSlug }} />
+          <Outlet context={{ learn, levelSlug, lessonSlug, guideSlug }} />
           {lessonSlug && (
             <LearnPagination
               prev={currentIndex > 0 ? flatLessons[currentIndex - 1] : null}
               next={currentIndex < flatLessons.length - 1 ? flatLessons[currentIndex + 1] : null}
+            />
+          )}
+          {guideSlug && (
+            <LearnPagination
+              prev={currentGuideIndex > 0 ? flatGuides[currentGuideIndex - 1] : null}
+              next={currentGuideIndex < flatGuides.length - 1 ? flatGuides[currentGuideIndex + 1] : null}
             />
           )}
         </main>

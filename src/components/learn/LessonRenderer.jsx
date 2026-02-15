@@ -52,6 +52,28 @@ function LessonRenderer({ sections }) {
                 </ul>
               </div>
             );
+          case 'step':
+            return (
+              <div key={i} className="ovl-block ovl-block-step">
+                <div className="ovl-step-number">{section.number}</div>
+                <div className="ovl-step-body">
+                  {section.title && <h3 id={headingId(section.title)} className="ovl-step-title">{section.title}</h3>}
+                  {section.body.map((p, j) => (
+                    <p key={j} className="ovl-block-paragraph">{p}</p>
+                  ))}
+                </div>
+              </div>
+            );
+          case 'template':
+            return (
+              <div key={i} className="ovl-block ovl-block-template">
+                <div className="ovl-template-header">
+                  <span className="ovl-template-label">Template</span>
+                  {section.title && <span className="ovl-template-title">{section.title}</span>}
+                </div>
+                <pre className="ovl-template-body"><code>{section.body}</code></pre>
+              </div>
+            );
           default:
             return null;
         }

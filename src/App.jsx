@@ -19,6 +19,9 @@ import LearnIndexPage from './pages/learn/LearnIndexPage';
 import LevelPage from './pages/learn/LevelPage';
 import LessonPage from './pages/learn/LessonPage';
 import LearnResourcesPage from './pages/learn/LearnResourcesPage';
+import LearnChatPage from './pages/learn/LearnChatPage';
+import ApproachIndexPage from './pages/learn/ApproachIndexPage';
+import GuidePage from './pages/learn/GuidePage';
 
 function App() {
   return (
@@ -48,7 +51,10 @@ function App() {
         <Route path="curriculum" element={<LearnIndexPage />} />
         <Route path="curriculum/:levelSlug" element={<LevelPage />} />
         <Route path="curriculum/:levelSlug/:lessonSlug" element={<LessonPage />} />
+        <Route path="approach" element={<ApproachIndexPage />} />
+        <Route path="approach/:guideSlug" element={<GuidePage />} />
         <Route path="resources" element={<LearnResourcesPage />} />
+        <Route path="chat" element={<LearnChatPage />} />
       </Route>
       <Route path="/investiture" element={<InvestiturePage />} />
     </Routes>

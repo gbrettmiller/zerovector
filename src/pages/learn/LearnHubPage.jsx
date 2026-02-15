@@ -2,6 +2,7 @@ import { Link, useOutletContext } from 'react-router-dom';
 import { SignInPrompt } from '../../components/learn/SignInPrompt';
 import LessonBadge from '../../components/learn/LessonBadge';
 import useSEO from '../../hooks/useSEO';
+import { approachCategories } from '../../content/learn/approach';
 
 function LearnHubPage() {
   const { learn } = useOutletContext();
@@ -48,6 +49,19 @@ function LearnHubPage() {
             <span className="ovl-hub-card-action">Browse levels &rarr;</span>
           </div>
         </Link>
+        <Link to="/open/learn/approach" className="ovl-hub-card">
+          <div className="ovl-hub-card-icon">
+            <span className="ovl-hub-card-glyph">&dagger;</span>
+          </div>
+          <div className="ovl-hub-card-body">
+            <h2 className="ovl-hub-card-title">Approach</h2>
+            <p className="ovl-hub-card-desc">
+              Step-by-step walkthroughs. IKEA instructions for the Zero Vector workflow.
+              {learn.approach && ` ${learn.approach.guides.length} guides across ${approachCategories.length} categories.`}
+            </p>
+            <span className="ovl-hub-card-action">Browse guides &rarr;</span>
+          </div>
+        </Link>
         <Link to="/open/learn/resources" className="ovl-hub-card">
           <div className="ovl-hub-card-icon">
             <span className="ovl-hub-card-glyph">&para;</span>
@@ -58,6 +72,18 @@ function LearnHubPage() {
               Books, articles, courses, tools, and reference materials. A curated library of external resources to deepen your practice.
             </p>
             <span className="ovl-hub-card-action">Browse resources &rarr;</span>
+          </div>
+        </Link>
+        <Link to="/open/learn/chat" className="ovl-hub-card">
+          <div className="ovl-hub-card-icon">
+            <span className="ovl-hub-card-glyph">&loz;</span>
+          </div>
+          <div className="ovl-hub-card-body">
+            <h2 className="ovl-hub-card-title">Chat</h2>
+            <p className="ovl-hub-card-desc">
+              Ask the Open Vector. An AI learning companion powered by Claude that can answer questions about design, building, and everything in the curriculum.
+            </p>
+            <span className="ovl-hub-card-action">Start a conversation &rarr;</span>
           </div>
         </Link>
       </div>
