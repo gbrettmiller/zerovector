@@ -32,7 +32,7 @@ function CompletionCard({ level }) {
 
   return (
     <div className="ovl-completion">
-      <div className="ovl-completion-icon">&check;</div>
+      <div className="ovl-completion-icon">✓</div>
       <h3 className="ovl-completion-title">Level Complete</h3>
       <p className="ovl-completion-subtitle">
         You finished all {total} lessons in {level.number} {level.title}. Share your progress.
