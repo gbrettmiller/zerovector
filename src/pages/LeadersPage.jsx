@@ -13,6 +13,7 @@ function LeadersPage() {
     title: 'For Leaders',
     description: 'How Zero-Vector Design helps executives and design leaders transform their organizations. Engagement models, the CZVO role, and strategic AI adoption.',
     path: '/leaders',
+    ogImage: 'https://zerovector.design/og/leaders.png',
   });
 
   return (

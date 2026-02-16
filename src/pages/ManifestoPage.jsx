@@ -9,6 +9,7 @@ import { ArrowIcon } from '../components/icons';
 import BootSequence from '../components/BootSequence';
 import NotifyForm from '../components/NotifyForm';
 import Animate from '../components/Animate';
+import ZeroVectorAnimation from '../components/ZeroVectorAnimation';
 import useSEO from '../hooks/useSEO';
 import en from '../content/en';
 
@@ -165,6 +166,7 @@ function ManifestoPage() {
     title: 'Zero-Vector Design',
     description: 'A design philosophy for the age of AI. No intermediary. No translation layer. No friction. From intent to artifact, directly.',
     path: '/',
+    ogImage: 'https://zerovector.design/og/manifesto.png',
   });
 
   return (
@@ -358,6 +360,24 @@ function ManifestoPage() {
               </Animate>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Why "Zero Vector" — Name Teaser */}
+      <section className="zv-section zv-name-teaser-section">
+        <div className="zv-container">
+          <Animate>
+            <SectionHeader number="---" title='Why "Zero Vector"?' />
+          </Animate>
+          <Animate delay={1}>
+            <ZeroVectorAnimation compact stages={en.name.stages} />
+          </Animate>
+          <Animate delay={2}>
+            <p className="zv-body-text">{en.name.teaser}</p>
+            <Link to="/name" className="zv-name-teaser-cta">
+              See the full story <ArrowIcon size={16} />
+            </Link>
+          </Animate>
         </div>
       </section>
 

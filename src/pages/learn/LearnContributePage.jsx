@@ -1,9 +1,10 @@
+import NotifyForm from '../../components/NotifyForm';
 import useSEO from '../../hooks/useSEO';
 
 function LearnContributePage() {
   useSEO({
     title: 'Contribute — The Open Vector',
-    description: 'Support the Open Vector. Contribute code, content, or funding to keep this free learning platform alive.',
+    description: 'Join the Open Vector as a Founding Contributor. Help build the free curriculum for design-led engineering in the age of AI.',
     path: '/open/learn/contribute',
   });
 
@@ -16,6 +17,132 @@ function LearnContributePage() {
           There are two ways to contribute: your skills, or your support.
         </p>
       </header>
+
+      {/* Founding Contributors — Call to Arms */}
+      <section className="ovl-contribute-section ovl-contribute-founding">
+        <div className="ovl-contribute-founding-banner">
+          <div className="ovl-contribute-founding-badge">Founding Contributor Program</div>
+          <h2 className="ovl-contribute-founding-title">Build This With Us</h2>
+          <p className="ovl-contribute-founding-body">
+            The Open Vector is in its founding phase. The curriculum is live, the platform
+            is growing, and we are looking for people who want to shape what this becomes.
+            Every person who contributes now gets their name on the wall — permanently.
+            Not as an afterthought. As a founder.
+          </p>
+          <p className="ovl-contribute-founding-body">
+            This is not "submit a PR and we will think about it." This is: join us at
+            the beginning. Help write the lessons. Review the guides. Translate the
+            curriculum. Make the platform more accessible. Your name. Your mark. Permanently
+            part of the project's history.
+          </p>
+        </div>
+
+        <h3 className="ovl-contribute-roles-title">What We Need</h3>
+        <div className="ovl-contribute-roles">
+          <div className="ovl-contribute-role">
+            <div className="ovl-contribute-role-icon">&sect;</div>
+            <div className="ovl-contribute-role-content">
+              <h4>Content Editors</h4>
+              <p>
+                Review and improve existing lessons for clarity, accuracy, and flow.
+                You read what is there and make it better — fixing explanations that
+                do not land, tightening prose, catching gaps in logic.
+              </p>
+            </div>
+          </div>
+          <div className="ovl-contribute-role">
+            <div className="ovl-contribute-role-icon">&dagger;</div>
+            <div className="ovl-contribute-role-content">
+              <h4>Lesson Authors</h4>
+              <p>
+                Write new lessons from real experience. The best curriculum comes from
+                people who have done the thing and want to teach others how. If you have
+                built with AI agents, you have something to teach.
+              </p>
+            </div>
+          </div>
+          <div className="ovl-contribute-role">
+            <div className="ovl-contribute-role-icon">&para;</div>
+            <div className="ovl-contribute-role-content">
+              <h4>Guide Writers</h4>
+              <p>
+                Create Approach guides from field experience. Practical, opinionated
+                walkthroughs of real workflows — prompting strategies, debugging patterns,
+                project scaffolding, team coordination.
+              </p>
+            </div>
+          </div>
+          <div className="ovl-contribute-role">
+            <div className="ovl-contribute-role-icon">&oplus;</div>
+            <div className="ovl-contribute-role-content">
+              <h4>Translators</h4>
+              <p>
+                Help bring the Open Vector to other languages. The content system is
+                built for internationalization. If you are fluent in another language
+                and passionate about design education, we need you.
+              </p>
+            </div>
+          </div>
+          <div className="ovl-contribute-role">
+            <div className="ovl-contribute-role-icon">&loz;</div>
+            <div className="ovl-contribute-role-content">
+              <h4>Accessibility Reviewers</h4>
+              <p>
+                Audit the platform for accessibility. Screen reader compatibility,
+                keyboard navigation, color contrast, motion sensitivity — if you have
+                expertise in a11y, the Open Vector needs your eyes.
+              </p>
+            </div>
+          </div>
+          <div className="ovl-contribute-role">
+            <div className="ovl-contribute-role-icon">&hearts;</div>
+            <div className="ovl-contribute-role-content">
+              <h4>Community Ambassadors</h4>
+              <p>
+                Share the Open Vector, gather feedback, represent the project in your
+                communities. Write about it, talk about it, bring back what people need.
+                The best products are shaped by the people who use them.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Founding Contributors Wall */}
+        <div className="ovl-contribute-wall">
+          <div className="ovl-contribute-wall-header">Founding Contributors</div>
+          <div className="ovl-contribute-wall-grid">
+            <div className="ovl-contribute-wall-placeholder">
+              Be among the first. Your name goes here.
+            </div>
+          </div>
+        </div>
+
+        {/* Sign Up */}
+        <div className="ovl-contribute-founding-cta">
+          <a
+            href="https://github.com/erikaflowers/zerovector/issues/new?template=founding-contributor.md&title=Founding+Contributor+Application"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ovl-btn ovl-btn-primary"
+          >
+            Apply on GitHub
+          </a>
+          <a
+            href="https://github.com/erikaflowers/zerovector/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ovl-btn ovl-btn-outline"
+          >
+            Browse Open Issues
+          </a>
+        </div>
+        <div className="ovl-contribute-founding-email">
+          <p className="ovl-contribute-founding-email-label">
+            Not ready to apply? Get notified about founding contributor opportunities.
+          </p>
+          <NotifyForm variant="learn" tag="founding-contributor" />
+        </div>
+      </section>
 
       {/* Philosophy */}
       <section className="ovl-contribute-section">

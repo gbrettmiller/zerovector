@@ -3847,6 +3847,26 @@ a:hover {
   color: #0a0a0a;
 }
 
+.ov-nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.ov-nav-link {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: #777;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.ov-nav-link:hover {
+  color: #0a0a0a;
+}
+
 .ov-nav-badge {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -10095,4 +10115,676 @@ a:hover {
     right: -40px;
     width: 180px;
   }
+}
+
+
+/* ===================================================================
+   SPRINT: Cross-Nav, Investiture ↔ OV, Email, Founding Contributors
+   =================================================================== */
+
+/* --- Sidebar hub badge (e.g. "Scaffold" next to Investiture link) --- */
+.ovl-sidebar-hub-badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ovl-accent);
+  background: var(--ovl-accent-subtle);
+  padding: 2px 6px;
+  border-radius: 2px;
+  margin-left: auto;
+}
+
+/* --- Investiture linked card style --- */
+.inv-card--linked {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.inv-card--linked:hover {
+  border-color: rgba(201, 168, 76, 0.5);
+  box-shadow: 0 0 24px rgba(201, 168, 76, 0.15);
+}
+
+/* --- Resources featured Investiture card --- */
+.ovl-resources-featured-card {
+  display: block;
+  text-decoration: none;
+  color: var(--ovl-text);
+  border: 1px solid var(--ovl-accent);
+  border-radius: 8px;
+  padding: 24px 28px;
+  margin-bottom: 32px;
+  background: var(--ovl-accent-subtle);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ovl-resources-featured-card:hover {
+  box-shadow: 0 2px 12px var(--ovl-accent-subtle);
+}
+
+.ovl-resources-featured-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ovl-accent);
+  margin-bottom: 8px;
+}
+
+.ovl-resources-featured-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.ovl-resources-featured-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ovl-text-secondary);
+  margin: 0 0 12px;
+}
+
+.ovl-resources-featured-cta {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ovl-accent);
+}
+
+/* --- Level page "Ready to Build?" CTA --- */
+.ovl-level-build-cta {
+  margin-top: 32px;
+  padding: 24px 28px;
+  border: 1px solid var(--ovl-accent);
+  border-radius: 8px;
+  background: var(--ovl-accent-subtle);
+}
+
+.ovl-level-build-cta-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ovl-accent);
+  margin-bottom: 8px;
+}
+
+.ovl-level-build-cta-body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ovl-text-secondary);
+  margin: 0 0 16px;
+}
+
+/* --- OV landing page Investiture card --- */
+.ov-investiture-card {
+  display: block;
+  text-decoration: none;
+  color: #0a0a0a;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  padding: 32px;
+  margin-top: 24px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ov-investiture-card:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.ov-investiture-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #00aa44;
+  margin-bottom: 12px;
+}
+
+.ov-investiture-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.ov-investiture-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+  margin: 0 0 16px;
+}
+
+.ov-investiture-cta {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: #00aa44;
+}
+
+/* --- NotifyForm learn variant (uses OVL CSS variables for theme compat) --- */
+.zv-notify--learn .zv-notify-input {
+  background: var(--ovl-bg-elevated, #f8f8f8);
+  color: var(--ovl-text, #1a1a1a);
+  border-color: var(--ovl-border, rgba(0, 0, 0, 0.12));
+}
+
+.zv-notify--learn .zv-notify-input::placeholder {
+  color: var(--ovl-text-secondary, #888);
+}
+
+.zv-notify--learn .zv-notify-input:focus {
+  border-color: var(--ovl-accent, #0066cc);
+  box-shadow: 0 0 0 2px var(--ovl-accent-subtle, rgba(0, 102, 204, 0.1));
+}
+
+.zv-notify--learn .zv-notify-btn {
+  background: var(--ovl-accent, #0066cc);
+  color: var(--ovl-bg, #fff);
+}
+
+.zv-notify--learn .zv-notify-btn:hover {
+  opacity: 0.9;
+}
+
+.zv-notify--learn .zv-notify-check {
+  color: var(--ovl-accent, #0066cc);
+}
+
+.zv-notify--learn .zv-notify-success-text {
+  color: var(--ovl-text-secondary, #666);
+}
+
+/* --- Email in sidebar (narrow, stacked) --- */
+.ovl-sidebar-email .zv-notify-form {
+  flex-direction: column;
+}
+
+.ovl-sidebar-email .zv-notify-btn {
+  width: 100%;
+}
+
+/* --- Email CTA sections on hub and level pages --- */
+.ovl-hub-support-email {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--ovl-border, rgba(0, 0, 0, 0.08));
+}
+
+.ovl-hub-support-email-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ovl-text-secondary, #666);
+  margin: 0 0 12px;
+}
+
+.ovl-level-email-cta {
+  margin-top: 24px;
+  padding: 20px 24px;
+  border: 1px solid var(--ovl-border, rgba(0, 0, 0, 0.08));
+  border-radius: 8px;
+  background: var(--ovl-bg-elevated, #fafafa);
+}
+
+.ovl-level-email-cta-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ovl-text-secondary, #666);
+  margin: 0 0 12px;
+}
+
+/* --- Founding Contributor Program --- */
+.ovl-contribute-founding {
+  border: 2px solid var(--ovl-accent, #0066cc);
+  border-radius: 12px;
+  padding: 32px;
+  background: var(--ovl-accent-subtle, rgba(0, 102, 204, 0.04));
+}
+
+.ovl-contribute-founding-banner {
+  margin-bottom: 32px;
+}
+
+.ovl-contribute-founding-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ovl-accent, #0066cc);
+  background: var(--ovl-accent-subtle, rgba(0, 102, 204, 0.08));
+  padding: 4px 12px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.ovl-contribute-founding-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ovl-text, #1a1a1a);
+  margin: 0 0 16px;
+}
+
+.ovl-contribute-founding-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ovl-text-secondary, #555);
+  margin: 0 0 12px;
+}
+
+/* Roles grid */
+.ovl-contribute-roles-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ovl-text, #1a1a1a);
+  margin: 0 0 20px;
+}
+
+.ovl-contribute-roles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  .ovl-contribute-roles {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ovl-contribute-role {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--ovl-border, rgba(0, 0, 0, 0.08));
+  border-radius: 8px;
+  background: var(--ovl-bg, #fff);
+}
+
+.ovl-contribute-role-icon {
+  font-size: 18px;
+  color: var(--ovl-accent, #0066cc);
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+  padding-top: 2px;
+}
+
+.ovl-contribute-role-content h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ovl-text, #1a1a1a);
+  margin: 0 0 6px;
+}
+
+.ovl-contribute-role-content p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ovl-text-secondary, #666);
+  margin: 0;
+}
+
+/* Founding contributors wall */
+.ovl-contribute-wall {
+  margin-bottom: 28px;
+  padding: 24px;
+  border: 1px dashed var(--ovl-border, rgba(0, 0, 0, 0.15));
+  border-radius: 8px;
+  text-align: center;
+}
+
+.ovl-contribute-wall-header {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ovl-text-secondary, #888);
+  margin-bottom: 16px;
+}
+
+.ovl-contribute-wall-placeholder {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--ovl-text-secondary, #999);
+  font-style: italic;
+  padding: 20px 0;
+}
+
+/* CTA row */
+.ovl-contribute-founding-cta {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.ovl-contribute-founding-email {
+  padding-top: 16px;
+  border-top: 1px solid var(--ovl-border, rgba(0, 0, 0, 0.08));
+}
+
+.ovl-contribute-founding-email-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ovl-text-secondary, #666);
+  margin: 0 0 12px;
+}
+
+/* ===================================================================
+   NAME ANIMATION PAGE — "Meaning Behind the Name" / /name route
+   =================================================================== */
+
+/* --- Name page layout --- */
+.zv-name-page {
+  padding-top: 80px;
+}
+
+.zv-name-hero {
+  text-align: center;
+  padding-bottom: 0;
+}
+
+.zv-name-hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #00ff88;
+  margin-bottom: 16px;
+}
+
+.zv-name-hero-title {
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0 0 24px;
+}
+
+.zv-name-hero-subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* --- Animation component --- */
+.zv-name-anim {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.zv-name-anim--compact {
+  max-width: 480px;
+}
+
+.zv-name-anim-svg-wrap {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.zv-name-anim-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Axes draw in */
+.zv-name-axis {
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.zv-name-axis--drawn {
+  stroke-dashoffset: 0;
+}
+
+/* Origin dot pulse */
+.zv-name-origin {
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.zv-name-origin--pulse {
+  opacity: 1;
+  animation: zv-origin-pulse 2s ease-in-out infinite;
+}
+
+@keyframes zv-origin-pulse {
+  0%, 100% { r: 4; opacity: 1; }
+  50% { r: 6; opacity: 0.7; }
+}
+
+/* Vector arrows */
+.zv-name-vector {
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  opacity: 0;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
+}
+
+.zv-name-vector--drawn {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+.zv-name-vector--collapsed {
+  stroke-dashoffset: 80;
+  opacity: 0;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s, opacity 1s ease 0.6s;
+}
+
+/* Arrowhead dots */
+.zv-name-arrowhead {
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.3s, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.zv-name-arrowhead--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.zv-name-arrowhead--collapsed {
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.6s ease 0.2s, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+/* Aerospace craft + target */
+.zv-name-craft,
+.zv-name-target {
+  opacity: 0;
+  transition: opacity 0.6s, transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.zv-name-craft--align {
+  opacity: 1;
+  transform: translateX(80px);
+}
+
+.zv-name-target--align {
+  opacity: 1;
+  transform: translateX(-80px);
+}
+
+.zv-name-align-line {
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1) 0.8s;
+}
+
+.zv-name-align-line--drawn {
+  stroke-dashoffset: 0;
+}
+
+/* Notation text */
+.zv-name-notation {
+  opacity: 0;
+  transition: opacity 0.8s, filter 0.8s;
+  filter: blur(4px);
+}
+
+.zv-name-notation--visible {
+  opacity: 1;
+  filter: blur(0);
+}
+
+/* --- Stage labels --- */
+.zv-name-anim-stages {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.zv-name-stage {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.zv-name-stage--active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.zv-name-stage-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #00ff88;
+  margin-bottom: 6px;
+}
+
+.zv-name-stage-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+/* --- Conclusion lines --- */
+.zv-name-conclusion-line {
+  text-align: center;
+  font-size: 18px;
+  max-width: 560px;
+  margin: 0 auto 8px;
+}
+
+/* --- Nav cards at bottom --- */
+.zv-name-nav-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .zv-name-nav-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.zv-name-nav-card {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.zv-name-nav-card:hover {
+  border-color: rgba(0, 255, 136, 0.3);
+  box-shadow: 0 2px 16px rgba(0, 255, 136, 0.06);
+}
+
+.zv-name-nav-card-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 6px;
+}
+
+.zv-name-nav-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.zv-name-nav-card-cta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #00ff88;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* --- Manifesto teaser --- */
+.zv-name-teaser-section {
+  text-align: center;
+}
+
+.zv-name-teaser-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: #00ff88;
+  text-decoration: none;
+  margin-top: 16px;
+  transition: color 0.2s;
+}
+
+.zv-name-teaser-cta:hover {
+  color: #33ffaa;
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .zv-name-axis,
+  .zv-name-vector,
+  .zv-name-arrowhead,
+  .zv-name-craft,
+  .zv-name-target,
+  .zv-name-align-line,
+  .zv-name-notation,
+  .zv-name-stage {
+    transition: none;
+  }
+  .zv-name-origin--pulse {
+    animation: none;
+  }
+  .zv-name-axis--drawn { stroke-dashoffset: 0; }
+  .zv-name-vector--drawn { stroke-dashoffset: 0; opacity: 1; }
+  .zv-name-arrowhead--visible { opacity: 1; transform: scale(1); }
+  .zv-name-craft--align { opacity: 1; }
+  .zv-name-target--align { opacity: 1; }
+  .zv-name-notation--visible { opacity: 1; filter: none; }
+  .zv-name-stage--active { opacity: 1; transform: none; }
 }

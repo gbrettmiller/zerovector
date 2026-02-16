@@ -2,6 +2,7 @@ import { Link, useOutletContext } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
 import { useProgress } from '../../contexts/ProgressContext';
 import LessonBadge from '../../components/learn/LessonBadge';
+import NotifyForm from '../../components/NotifyForm';
 import useSEO from '../../hooks/useSEO';
 import { approachCategories } from '../../content/learn/approach';
 
@@ -14,6 +15,7 @@ function LearnHubPage() {
     title: 'Learn — The Open Vector',
     description: 'The Open Vector learning platform. Curriculum, resources, and everything you need to build with intention.',
     path: '/open/learn',
+    ogImage: 'https://zerovector.design/og/learn.png',
   });
 
   const totalLessons = learn.levels.reduce((sum, l) => sum + l.lessons.length, 0);
@@ -270,6 +272,10 @@ function LearnHubPage() {
             >
               Sponsor on GitHub
             </a>
+          </div>
+          <div className="ovl-hub-support-email">
+            <p className="ovl-hub-support-email-label">Get notified when new content drops.</p>
+            <NotifyForm variant="learn" tag="zerovector" />
           </div>
         </div>
       </div>

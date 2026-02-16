@@ -14,6 +14,7 @@ function OriginPage() {
     title: 'The Origin',
     description: 'The story behind Zero-Vector Design. 31 years of UX and service design, AI experiments, and one question: what if one person could build the whole thing?',
     path: '/origin',
+    ogImage: 'https://zerovector.design/og/origin.png',
   });
 
   return (

@@ -13,6 +13,7 @@ import InvestiturePage from './pages/InvestiturePage';
 import AskPage from './pages/AskPage';
 import QuizPage from './pages/QuizPage';
 import StartPage from './pages/StartPage';
+import NamePage from './pages/NamePage';
 import NotFoundPage from './pages/NotFoundPage';
 import LearnHubPage from './pages/learn/LearnHubPage';
 import LearnIndexPage from './pages/learn/LearnIndexPage';
@@ -42,6 +43,7 @@ function App() {
         <Route path="/start" element={<StartPage />} />
         <Route path="/ask" element={<AskPage />} />
         <Route path="/quiz" element={<QuizPage />} />
+        <Route path="/name" element={<NamePage />} />
         {/* Redirects from old routes */}
         <Route path="/about" element={<Navigate to="/philosophy" replace />} />
         <Route path="/join" element={<Navigate to="/" replace />} />

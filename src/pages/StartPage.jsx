@@ -15,6 +15,7 @@ function StartPage() {
     title: 'Get Started',
     description: 'Start building with Zero-Vector Design. Get Investiture, explore the Open Vector curriculum, and join the movement.',
     path: '/start',
+    ogImage: 'https://zerovector.design/og/start.png',
   });
 
   return (

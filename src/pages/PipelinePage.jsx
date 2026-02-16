@@ -13,6 +13,7 @@ function PipelinePage() {
     title: 'The Approach',
     description: 'The Zero-Vector approach to building products: eight phases from problem framing to shipping, with tool-agnostic methodology and AI-native practices.',
     path: '/approach',
+    ogImage: 'https://zerovector.design/og/approach.png',
   });
 
   return (

@@ -90,6 +90,7 @@ function QuizPage() {
     title: 'Am I Vibe Coding?',
     description: 'Take the quiz. Describe your workflow and find out if you are vibe coding or building with intent. AI-scored assessment from Zero-Vector Design.',
     path: '/quiz',
+    ogImage: 'https://zerovector.design/og/quiz.png',
   });
 
   // Check for shared score in URL params

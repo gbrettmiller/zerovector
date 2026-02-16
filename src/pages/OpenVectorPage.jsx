@@ -19,6 +19,7 @@ function OpenVectorPage() {
     title: 'The Open Vector',
     description: 'A free, open curriculum for learning to build with AI. Five levels from apprentice to auteur. Launching March 2nd. Sign up to get notified.',
     path: '/open',
+    ogImage: 'https://zerovector.design/og/open-vector.png',
   });
 
   useEffect(() => {
@@ -39,6 +40,10 @@ function OpenVectorPage() {
       <nav className="ov-nav">
         <div className="ov-nav-inner">
           <Link to="/" className="ov-nav-brand">{open.nav.brand}</Link>
+          <div className="ov-nav-links">
+            <Link to="/open/learn" className="ov-nav-link">Learn</Link>
+            <Link to="/investiture" className="ov-nav-link">Investiture</Link>
+          </div>
           <div className="ov-nav-badge">{open.nav.badge}</div>
         </div>
       </nav>
@@ -212,6 +217,25 @@ function OpenVectorPage() {
           </Animate>
           <Animate delay={2}>
             <p className="ov-close">{open.exupery.close}</p>
+          </Animate>
+        </div>
+      </section>
+
+      {/* Investiture */}
+      <section className="ov-section">
+        <div className="ov-container">
+          <hr className="ov-rule" />
+          <Animate>
+            <div className="ov-label">Build</div>
+            <Link to="/investiture" className="ov-investiture-card">
+              <div className="ov-investiture-badge">Free &amp; Open Source</div>
+              <h3 className="ov-investiture-title">Investiture</h3>
+              <p className="ov-investiture-desc">
+                Ready to build? Get the Zero-Vector starter scaffold. Architecture that teaches
+                your AI to write clean code. Clone it. Open Claude Code. Start shipping.
+              </p>
+              <span className="ov-investiture-cta">Get the Scaffold &rarr;</span>
+            </Link>
           </Animate>
         </div>
       </section>

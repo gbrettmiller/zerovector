@@ -18,6 +18,7 @@ function InvestiturePage() {
     title: 'Investiture',
     description: 'A decoupled, enterprise-ready application scaffold for AI-assisted development. Clone it, open Claude Code, start building. Architecture that teaches your AI to write clean code.',
     path: '/investiture',
+    ogImage: 'https://zerovector.design/og/investiture.png',
   });
 
   useEffect(() => {
@@ -46,6 +47,7 @@ function InvestiturePage() {
         <div className="inv-nav-inner">
           <Link to="/" className="inv-nav-back">{inv.nav.back}</Link>
           <span className="inv-nav-brand">{inv.nav.brand}</span>
+          <Link to="/open/learn" className="inv-nav-link">Learn</Link>
           <a href={inv.cta.primaryUrl} target="_blank" rel="noopener noreferrer" className="inv-nav-link">{inv.nav.github}</a>
         </div>
       </nav>
@@ -223,6 +225,30 @@ function InvestiturePage() {
           <Animate delay={1}>
             <p className="inv-context">{inv.quote.context}</p>
           </Animate>
+        </div>
+      </section>
+
+      {/* Learn More */}
+      <section className="inv-section">
+        <div className="inv-container">
+          <hr className="inv-rule" />
+          <Animate>
+            <div className="inv-label">Learn More</div>
+          </Animate>
+          <div className="inv-two-col">
+            <Animate>
+              <Link to="/open/learn" className="inv-card inv-card--gold inv-card--linked">
+                <h3 className="inv-card-title">The Open Vector</h3>
+                <p className="inv-card-body">Free curriculum. From orientation to auteur. Learn the philosophy behind the scaffold.</p>
+              </Link>
+            </Animate>
+            <Animate delay={1}>
+              <Link to="/philosophy" className="inv-card inv-card--gold inv-card--linked">
+                <h3 className="inv-card-title">The Philosophy</h3>
+                <p className="inv-card-body">Seven principles for building with AI. The thinking that shapes the scaffold.</p>
+              </Link>
+            </Animate>
+          </div>
         </div>
       </section>
 

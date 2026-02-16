@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useProgress } from '../../contexts/ProgressContext';
 import LessonBadge from './LessonBadge';
+import NotifyForm from '../NotifyForm';
 import { topicFilters } from '../../content/learn/resources';
 import { approachCategories } from '../../content/learn/approach';
 
@@ -24,7 +25,12 @@ function LearnSidebar({ levels, activeLevelSlug, activeLessonSlug, approach, act
         <div className="ovl-sidebar-scroll">
           {isContribute ? (
             <div className="ovl-sidebar-contribute">
-              <div className="ovl-sidebar-section-label">Contribute</div>
+              <div className="ovl-sidebar-section-label">Founding Contributors</div>
+              <Link to="/open/learn/contribute" className="ovl-sidebar-hub-link" onClick={onClose}>
+                <span className="ovl-sidebar-hub-glyph">&starf;</span>
+                <span>Join as a Founder</span>
+              </Link>
+              <div className="ovl-sidebar-section-label" style={{ marginTop: '16px' }}>Contribute</div>
               <a
                 href="https://github.com/erikaflowers/zerovector"
                 target="_blank"
@@ -186,6 +192,12 @@ function LearnSidebar({ levels, activeLevelSlug, activeLessonSlug, approach, act
                 <span className="ovl-sidebar-hub-glyph">&Delta;</span>
                 <span>Changelog</span>
               </Link>
+              <div className="ovl-sidebar-section-label" style={{ marginTop: '24px' }}>Build</div>
+              <Link to="/investiture" className="ovl-sidebar-hub-link" onClick={onClose}>
+                <span className="ovl-sidebar-hub-glyph">&diams;</span>
+                <span>Investiture</span>
+                <span className="ovl-sidebar-hub-badge">Scaffold</span>
+              </Link>
               <div className="ovl-sidebar-section-label" style={{ marginTop: '24px' }}>Quick Stats</div>
               <div className="ovl-sidebar-hub-stat">
                 <span className="ovl-sidebar-hub-stat-num">{levels.length}</span>
@@ -198,6 +210,10 @@ function LearnSidebar({ levels, activeLevelSlug, activeLessonSlug, approach, act
               <div className="ovl-sidebar-hub-stat">
                 <span className="ovl-sidebar-hub-stat-num">{approach?.guides?.length || 0}</span>
                 <span className="ovl-sidebar-hub-stat-label">Guides</span>
+              </div>
+              <div className="ovl-sidebar-section-label" style={{ marginTop: '24px' }}>Stay Updated</div>
+              <div className="ovl-sidebar-email">
+                <NotifyForm variant="learn" tag="zerovector" />
               </div>
             </div>
           ) : (

@@ -2,6 +2,7 @@ import { Link, useParams, useOutletContext } from 'react-router-dom';
 import { useProgress } from '../../contexts/ProgressContext';
 import LessonBadge from '../../components/learn/LessonBadge';
 import CompletionCard from '../../components/learn/CompletionCard';
+import NotifyForm from '../../components/NotifyForm';
 import RightRail from '../../components/learn/RightRail';
 import useSEO from '../../hooks/useSEO';
 
@@ -105,6 +106,19 @@ function LevelPage() {
             })}
           </div>
           <CompletionCard level={level} />
+          {['03-the-pipeline', '04-orchestration', '05-auteur'].includes(level.slug) && (
+            <div className="ovl-level-build-cta">
+              <div className="ovl-level-build-cta-label">Ready to Build?</div>
+              <p className="ovl-level-build-cta-body">
+                Take what you have learned and start building with Investiture — the Zero-Vector starter scaffold.
+              </p>
+              <Link to="/investiture" className="ovl-btn ovl-btn-primary">Get Investiture &rarr;</Link>
+            </div>
+          )}
+          <div className="ovl-level-email-cta">
+            <p className="ovl-level-email-cta-label">Get notified when new lessons and levels are published.</p>
+            <NotifyForm variant="learn" tag="zerovector" />
+          </div>
         </div>
         <RightRail>
           {(prevLevel || nextLevel) && (

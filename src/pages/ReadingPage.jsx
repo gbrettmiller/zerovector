@@ -14,6 +14,7 @@ function ReadingPage() {
     title: 'Media',
     description: 'Articles, books, podcast episodes, and talks on Zero-Vector Design, AI-native product development, and the future of building.',
     path: '/media',
+    ogImage: 'https://zerovector.design/og/media.png',
   });
 
   return (

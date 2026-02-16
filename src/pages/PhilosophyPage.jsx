@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
 import VectorField from '../components/VectorField';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
 import Animate from '../components/Animate';
+import { ArrowIcon } from '../components/icons';
 import useSEO from '../hooks/useSEO';
 import en from '../content/en';
 
@@ -13,6 +15,7 @@ function PhilosophyPage() {
     title: 'Philosophy',
     description: 'The Zero-Vector philosophy: seven principles for building with AI where intent flows directly into the artifact. No intermediary. No translation layer.',
     path: '/philosophy',
+    ogImage: 'https://zerovector.design/og/philosophy.png',
   });
 
   return (
@@ -98,17 +101,20 @@ function PhilosophyPage() {
         </div>
       </section>
 
-      {/* Why "Zero Vector" — Name Origin */}
+      {/* Why "Zero Vector" — Name Origin (teaser → full page) */}
       <section className="zv-section">
         <div className="zv-container">
           <Animate>
             <h2 className="zv-section-title">{philosophy.name_origin.title}</h2>
           </Animate>
-          {philosophy.name_origin.paragraphs.map((p, i) => (
-            <Animate key={i} delay={Math.min(i + 1, 4)}>
-              <p className="zv-body-text">{p}</p>
-            </Animate>
-          ))}
+          <Animate delay={1}>
+            <p className="zv-body-text">{philosophy.name_origin.paragraphs[0]}</p>
+          </Animate>
+          <Animate delay={2}>
+            <Link to="/name" className="zv-name-teaser-cta">
+              See the full animated story <ArrowIcon size={16} />
+            </Link>
+          </Animate>
         </div>
       </section>
 

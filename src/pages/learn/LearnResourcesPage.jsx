@@ -43,6 +43,15 @@ function LearnResourcesPage() {
         </p>
       </header>
 
+      <Link to="/investiture" className="ovl-resources-featured-card">
+        <div className="ovl-resources-featured-badge">Zero-Vector Scaffold</div>
+        <h3 className="ovl-resources-featured-title">Investiture</h3>
+        <p className="ovl-resources-featured-desc">
+          Architecture that teaches your AI to write clean code. Clone it. Open Claude Code. Start building.
+        </p>
+        <span className="ovl-resources-featured-cta">Get the Scaffold &rarr;</span>
+      </Link>
+
       <div className="ovl-with-rail">
         <div className="ovl-main">
           <div className="ovl-resources-filters">
