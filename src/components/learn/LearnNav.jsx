@@ -74,7 +74,7 @@ function LearnNav({ sidebarOpen, onToggle }) {
           >
             <span className="ovl-nav-support-heart">&hearts;</span>
           </a>
-          <Link to="/open" className="ovl-nav-back">{learn.nav.backLabel}</Link>
+          <Link to="/" className="ovl-nav-back">Zero Vector</Link>
           <SignInButton />
         </div>
       </div>
