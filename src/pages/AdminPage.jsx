@@ -5,7 +5,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import useSEO from '../hooks/useSEO';
 
-const ADMIN_EMAIL = 'eflowers@gmail.com';
+const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
 
 const ROLE_TITLES = {
   framework: 'Framework Engineer',

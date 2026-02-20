@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 
-const ADMIN_EMAIL = 'eflowers@gmail.com';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 const VALID_STATUSES = ['new', 'viewed', 'contacted', 'accepted', 'rejected'];
 
 const supabase = process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
