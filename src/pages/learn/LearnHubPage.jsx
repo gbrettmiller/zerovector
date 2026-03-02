@@ -5,6 +5,7 @@ import LessonBadge from '../../components/learn/LessonBadge';
 import NotifyForm from '../../components/NotifyForm';
 import useSEO from '../../hooks/useSEO';
 import { approachCategories } from '../../content/learn/approach';
+import home from '../../content/home';
 
 function LearnHubPage() {
   const { learn } = useOutletContext();
@@ -209,6 +210,27 @@ function LearnHubPage() {
             <span className="ovl-hub-card-action">Start a conversation &rarr;</span>
           </div>
         </Link>
+      </div>
+
+      {/* Recommended Reading */}
+      <div className="ovl-hub-reading">
+        <div className="ovl-hub-reading-header">{home.recommendedReading.headline}</div>
+        <p className="ovl-hub-reading-subtitle">{home.recommendedReading.subtitle}</p>
+        <div className="ovl-hub-reading-list">
+          {home.recommendedReading.articles.map((article, i) => (
+            <a
+              key={i}
+              href={article.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ovl-hub-reading-item"
+            >
+              <span className="ovl-hub-reading-item-title">{article.title}</span>
+              <span className="ovl-hub-reading-item-subtitle">{article.subtitle}</span>
+              <span className="ovl-hub-reading-item-date">{article.date}</span>
+            </a>
+          ))}
+        </div>
       </div>
 
       {/* What's New */}

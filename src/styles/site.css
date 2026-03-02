@@ -993,6 +993,89 @@ a:hover {
   }
 }
 
+/* --- Recommended Reading (Manifesto Page) --- */
+
+.zv-reading {
+  margin-top: 48px;
+}
+
+.zv-reading-headline {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0a0a0a;
+  margin: 0 0 4px;
+}
+
+.zv-reading-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 24px;
+}
+
+.zv-reading-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.zv-reading-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
+  border: 1px solid rgba(0, 122, 122, 0.2);
+  background: #f8fcfc;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.zv-reading-item:hover {
+  border-color: #007a7a;
+  background: #f0fafa;
+}
+
+.zv-reading-item-title {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0a0a0a;
+}
+
+.zv-reading-item-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.zv-reading-item-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.zv-reading-item-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #999;
+}
+
+.zv-reading-item-cta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #007a7a;
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 600px) {
+  .zv-reading-item {
+    padding: 12px 16px;
+  }
+}
+
 .zv-closing-notify {
   text-align: center;
   margin-top: 16px;
@@ -1035,6 +1118,7 @@ a:hover {
   gap: 8px;
   max-width: 460px;
   width: 100%;
+  margin: 0 auto;
 }
 
 .zv-notify-input {
@@ -4891,7 +4975,7 @@ a:hover {
 }
 
 .ov-section {
-  padding: 80px 0;
+  padding: 20px 0;
   position: relative;
 }
 
@@ -4951,6 +5035,40 @@ a:hover {
   color: #0a0a0a;
 }
 
+.ov-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.ov-hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 20px;
+}
+
+.ov-hamburger span {
+  display: block;
+  height: 2px;
+  background: #0a0a0a;
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.ov-hamburger--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.ov-hamburger--open span:nth-child(2) {
+  opacity: 0;
+}
+.ov-hamburger--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 .ov-nav-badge {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -4963,11 +5081,59 @@ a:hover {
   border-radius: 2px;
 }
 
+.ov-mobile-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .ov-nav-toggle {
+    display: flex;
+  }
+  .ov-nav-links,
+  .ov-nav-badge {
+    display: none;
+  }
+  .ov-mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 8px 0;
+  }
+  .ov-mobile-menu-link {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+    padding: 12px 24px;
+    transition: background 0.15s ease;
+  }
+  .ov-mobile-menu-link:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+  .ov-mobile-menu-badge {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #00aa44;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 24px;
+  }
+}
+
 /* --- Labels --- */
 .ov-label {
   font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 700;
   color: #0055ff;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -5240,6 +5406,78 @@ a:hover {
   margin-top: 48px;
 }
 
+.ov-curriculum-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 24px;
+}
+
+.ov-curriculum-split-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ov-curriculum-split-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.ov-curriculum-overview-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.ov-curriculum-overview-item:first-child {
+  border-top: 1px solid #e8e8e8;
+}
+
+.ov-curriculum-overview-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: #999;
+  flex-shrink: 0;
+  min-width: 24px;
+}
+
+.ov-curriculum-overview-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0a0a0a;
+  flex-shrink: 0;
+}
+
+.ov-curriculum-overview-sub {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .ov-curriculum-split {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .ov-curriculum-overview-item {
+    flex-wrap: wrap;
+    gap: 4px 12px;
+  }
+  .ov-curriculum-overview-sub {
+    width: 100%;
+    padding-left: 40px;
+  }
+}
+
+.ov-curriculum-cta {
+  margin-top: 32px;
+}
+
 .ov-level {
   display: flex;
   gap: 32px;
@@ -5459,6 +5697,7 @@ a:hover {
 /* --- Saint-Exupéry --- */
 .ov-exupery {
   text-align: center;
+  padding: 0 0 60px 0;
 }
 
 .ov-exupery .ov-container {
@@ -5467,7 +5706,7 @@ a:hover {
 
 .ov-quote {
   font-family: 'Source Serif 4', Georgia, serif;
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-size: clamp(1rem, 2vw, 1.5rem);
   font-style: italic;
   color: #333;
   line-height: 1.7;
@@ -5499,6 +5738,32 @@ a:hover {
   color: #0a0a0a;
 }
 
+/* --- Footer --- */
+.ov-footer {
+  border-top: 1px solid #e0e0e0;
+  padding: 32px 0 48px;
+  text-align: center;
+}
+
+.ov-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.ov-footer-link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: #666;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.15s ease;
+}
+
+.ov-footer-link:hover {
+  color: #0a0a0a;
+}
+
 /* --- Support Section --- */
 .ov-support-section {
   text-align: center;
@@ -5521,30 +5786,47 @@ a:hover {
   margin-top: 24px;
 }
 
-/* --- CTA Section --- */
-.ov-cta-section {
-  text-align: center;
-  padding-bottom: 120px;
+/* --- Twin Cards (Support + CTA side by side) --- */
+
+.ov-twin-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding-bottom: 80px;
 }
 
-.ov-cta-section .ov-container {
-  max-width: 700px;
+.ov-twin-card {
+  padding: 32px;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
 }
 
-.ov-cta-title {
+.ov-twin-card-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
   font-weight: 700;
   color: #0a0a0a;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
-.ov-cta-buttons {
+.ov-twin-card .ov-body {
+  flex: 1;
+}
+
+.ov-twin-card-actions {
   display: flex;
-  gap: 16px;
-  justify-content: center;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-top: 32px;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .ov-twin-cards {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-bottom: 60px;
+  }
 }
 
 /* --- Buttons --- */
@@ -6945,6 +7227,7 @@ a:hover {
   font-weight: 700;
   color: var(--ovl-text) !important;
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .ovl-nav-badge {
@@ -7826,6 +8109,35 @@ a:hover {
 
 .ovl-nav-group-trigger:hover {
   color: var(--ovl-text);
+}
+
+.ovl-nav-group-trigger--active {
+  color: var(--ovl-accent) !important;
+}
+
+/* "More" dropdown positioned inline with tabs */
+.ovl-nav-more {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.ovl-nav-more .ovl-nav-group-trigger {
+  height: 100%;
+  padding: 0 16px;
+  font-weight: 600;
+  color: var(--ovl-text-tertiary);
+  border-bottom: 2px solid transparent;
+}
+
+.ovl-nav-more .ovl-nav-group-trigger--active {
+  color: var(--ovl-accent) !important;
+  border-bottom-color: var(--ovl-accent);
+}
+
+.ovl-nav-more .ovl-nav-group-panel {
+  left: 0;
+  right: auto;
 }
 
 .ovl-nav-group-chevron {
@@ -9059,6 +9371,79 @@ a:hover {
   font-size: 10px;
   color: var(--ovl-text-tertiary);
   margin-left: auto;
+}
+
+/* --- Recommended Reading (Learn Hub) --- */
+
+.ovl-hub-reading {
+  margin-top: 40px;
+}
+
+.ovl-hub-reading-header {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ovl-text-tertiary);
+  margin-bottom: 4px;
+}
+
+.ovl-hub-reading-subtitle {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--ovl-text-secondary);
+  margin: 0 0 12px;
+}
+
+.ovl-hub-reading-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ovl-hub-reading-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 16px;
+  border: 1px solid var(--ovl-border);
+  color: var(--ovl-text) !important;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.ovl-hub-reading-item:hover {
+  background: var(--ovl-accent-subtle);
+}
+
+.ovl-hub-reading-item-title {
+  font-size: 14px;
+  font-weight: 500;
+  flex: 1;
+  min-width: 0;
+}
+
+.ovl-hub-reading-item-subtitle {
+  font-size: 12px;
+  color: var(--ovl-text-secondary);
+  flex: 1;
+  min-width: 0;
+  display: none;
+}
+
+.ovl-hub-reading-item-date {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ovl-text-tertiary);
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .ovl-hub-reading-item-subtitle {
+    display: block;
+  }
 }
 
 /* --- Resources / Go Further Page --- */
@@ -12693,4 +13078,100 @@ a:hover {
 .ovl-welcome-dismiss:hover {
   color: rgba(255, 255, 255, 0.8);
   border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Anon Welcome Modal — sign-in actions
+   ──────────────────────────────────────────────────────────────── */
+
+.ovl-anon-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ovl-anon-signin {
+  display: block;
+  width: 100%;
+  background: #00ff88;
+  color: #0a0a0a;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ovl-anon-signin:hover {
+  background: #33ffaa;
+  box-shadow: 0 2px 16px rgba(0, 255, 136, 0.3);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Sign-In Banner — persistent bar for anonymous users
+   ──────────────────────────────────────────────────────────────── */
+
+.ovl-signin-banner {
+  background: #0a0a0a;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  margin-bottom: 16px;
+}
+
+.ovl-signin-banner-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 24px;
+  max-width: 100%;
+}
+
+.ovl-signin-banner-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.02em;
+  flex: 1;
+}
+
+.ovl-signin-banner-btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: #0a0a0a;
+  background: #00ff88;
+  border: none;
+  padding: 4px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.ovl-signin-banner-btn:hover {
+  background: #33ffaa;
+}
+
+.ovl-signin-banner-close {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 0.2s ease;
+}
+
+.ovl-signin-banner-close:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+  .ovl-signin-banner-inner {
+    padding: 8px 16px;
+  }
+  .ovl-signin-banner-text {
+    font-size: 10px;
+  }
 }

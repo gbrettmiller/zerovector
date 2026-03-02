@@ -12,7 +12,7 @@ const networkItems = [
   { to: '/investiture', label: 'Investiture' },
 ];
 
-function NavDropdown({ label, items }) {
+function NavDropdown({ label, items, active, className }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
   const timeout = useRef(null);
@@ -27,13 +27,13 @@ function NavDropdown({ label, items }) {
 
   return (
     <div
-      className={`ovl-nav-group ${open ? 'ovl-nav-group--open' : ''}`}
+      className={`ovl-nav-group ${open ? 'ovl-nav-group--open' : ''} ${className || ''}`}
       ref={ref}
       onMouseEnter={() => { clearTimeout(timeout.current); setOpen(true); }}
       onMouseLeave={() => { timeout.current = setTimeout(() => setOpen(false), 150); }}
     >
       <button
-        className="ovl-nav-group-trigger"
+        className={`ovl-nav-group-trigger ${active ? 'ovl-nav-group-trigger--active' : ''}`}
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-haspopup="true"
@@ -63,8 +63,8 @@ function LearnNav({ sidebarOpen, onToggle }) {
   const { pathname } = useLocation();
   const isApproach = pathname.includes('/approach') && pathname.includes('/open/learn');
   const isCurriculum = pathname.includes('/curriculum');
-  const isResources = pathname.includes('/resources');
   const isChat = pathname.includes('/chat');
+  const isMoreActive = pathname.includes('/resources') || pathname.includes('/contribute') || pathname.includes('/about');
 
   return (
     <nav className="ovl-nav">
@@ -102,29 +102,21 @@ function LearnNav({ sidebarOpen, onToggle }) {
             Approach
           </Link>
           <Link
-            to="/open/learn/resources"
-            className={`ovl-nav-tab ${isResources ? 'ovl-nav-tab--active' : ''}`}
-          >
-            Go Further
-          </Link>
-          <Link
             to="/open/learn/chat"
             className={`ovl-nav-tab ${isChat ? 'ovl-nav-tab--active' : ''}`}
           >
             Chat
           </Link>
-          <Link
-            to="/open/learn/contribute"
-            className={`ovl-nav-tab ${pathname.includes('/contribute') ? 'ovl-nav-tab--active' : ''}`}
-          >
-            Contribute
-          </Link>
-          <Link
-            to="/open/learn/about"
-            className={`ovl-nav-tab ${pathname.includes('/about') ? 'ovl-nav-tab--active' : ''}`}
-          >
-            About
-          </Link>
+          <NavDropdown
+            label="More"
+            active={isMoreActive}
+            className="ovl-nav-more"
+            items={[
+              { to: '/open/learn/resources', label: 'Go Further' },
+              { to: '/open/learn/contribute', label: 'Contribute' },
+              { to: '/open/learn/about', label: 'About' },
+            ]}
+          />
         </div>
         <div className="ovl-nav-right">
           <LearnSearch />

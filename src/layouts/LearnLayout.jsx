@@ -6,6 +6,8 @@ import LearnBreadcrumbs from '../components/learn/LearnBreadcrumbs';
 import LearnPagination from '../components/learn/LearnPagination';
 import ErrorBoundary from '../components/ErrorBoundary';
 import WelcomeModal from '../components/WelcomeModal';
+import AnonWelcomeModal from '../components/AnonWelcomeModal';
+import SignInBanner from '../components/learn/SignInBanner';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import '../styles/site.css';
 import en from '../content/en';
@@ -86,6 +88,7 @@ function LearnLayout() {
 
   return (
     <ThemeProvider>
+    <AnonWelcomeModal />
     <WelcomeModal />
     <div className="ovl-page">
       <LearnNav
@@ -103,6 +106,7 @@ function LearnLayout() {
           onClose={() => setSidebarOpen(false)}
         />
         <main className="ovl-content">
+          <SignInBanner />
           <LearnBreadcrumbs
             levelSlug={levelSlug}
             lessonSlug={lessonSlug}

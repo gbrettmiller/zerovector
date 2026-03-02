@@ -1,14 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Animate from '../components/Animate';
 import useSEO from '../hooks/useSEO';
 import '../styles/site.css';
 import en from '../content/en';
 
-const { open, learn } = en;
+const { open } = en;
 
 function OpenVectorPage() {
   const { pathname } = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,6 +39,16 @@ function OpenVectorPage() {
       {/* Custom Nav */}
       <nav className="ov-nav">
         <div className="ov-nav-inner">
+          <button
+            className="ov-nav-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+          >
+            <span className={`ov-hamburger ${menuOpen ? 'ov-hamburger--open' : ''}`}>
+              <span /><span /><span />
+            </span>
+          </button>
           <Link to="/" className="ov-nav-brand">{open.nav.brand}</Link>
           <div className="ov-nav-links">
             <Link to="/open/learn" className="ov-nav-link">Learn</Link>
@@ -46,6 +57,14 @@ function OpenVectorPage() {
           <div className="ov-nav-badge">{open.nav.badge}</div>
         </div>
       </nav>
+      {menuOpen && (
+        <div className="ov-mobile-menu">
+          <Link to="/open/learn" className="ov-mobile-menu-link" onClick={() => setMenuOpen(false)}>Learn</Link>
+          <Link to="/investiture" className="ov-mobile-menu-link" onClick={() => setMenuOpen(false)}>Investiture</Link>
+          <Link to="/" className="ov-mobile-menu-link" onClick={() => setMenuOpen(false)}>Zero Vector</Link>
+          <div className="ov-mobile-menu-badge">{open.nav.badge}</div>
+        </div>
+      )}
 
       {/* Hero */}
       <section className="ov-section ov-hero">
@@ -107,77 +126,32 @@ function OpenVectorPage() {
           <hr className="ov-rule" />
           <Animate>
             <div className="ov-label">{open.curriculum.label}</div>
-            <p className="ov-body ov-muted">{open.curriculum.intro}</p>
           </Animate>
-          <div className="ov-curriculum">
-            {open.curriculum.levels.map((level, i) => {
-              const learnLevel = learn.levels.find(l => l.number === level.number);
-              const levelPath = learnLevel ? `/open/learn/curriculum/${learnLevel.slug}` : '/open/learn';
-              return (
-                <Animate key={i}>
-                  <Link to={levelPath} className="ov-level">
-                    <div className="ov-level-left">
-                      <div className="ov-level-number">{level.number}</div>
-                      <div className={`ov-level-status ${level.status === 'available' ? 'ov-level-status--available' : ''}`}>
-                        {level.status === 'available' ? 'Available' : 'Coming soon'}
-                      </div>
-                    </div>
-                    <div className="ov-level-right">
-                      <h3 className="ov-level-title">{level.title}</h3>
-                      <div className="ov-level-subtitle">{level.subtitle}</div>
-                      <p className="ov-level-desc">{level.desc}</p>
-                      <div className="ov-level-topics">
-                        {level.topics.map((topic, j) => (
-                          <span key={j} className="ov-topic">{topic}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </Link>
-                </Animate>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Recently Added */}
-      {(() => {
-        const recentLessons = learn.levels.flatMap(level =>
-          level.lessons
-            .filter(l => l.badge)
-            .map(l => ({
-              title: l.title,
-              badge: l.badge,
-              levelTitle: `${level.number} ${level.title}`,
-              path: `/open/learn/curriculum/${level.slug}/${l.slug}`,
-              updatedAt: l.updatedAt,
-            }))
-        ).slice(0, 8);
-        if (recentLessons.length === 0) return null;
-        return (
-          <section className="ov-section">
-            <div className="ov-container">
-              <hr className="ov-rule" />
-              <Animate>
-                <div className="ov-label">Recently Added</div>
-              </Animate>
-              <div className="ov-recently-updated">
-                {recentLessons.map((item, i) => (
-                  <Animate key={i}>
-                    <Link to={item.path} className="ov-recent-item">
-                      <span className={`ov-recent-badge ov-recent-badge--${item.badge}`}>
-                        {item.badge === 'new' ? 'New' : 'Updated'}
-                      </span>
-                      <span className="ov-recent-title">{item.title}</span>
-                      <span className="ov-recent-level">{item.levelTitle}</span>
-                    </Link>
-                  </Animate>
+          <Animate delay={1}>
+            <div className="ov-curriculum-split">
+              <div className="ov-curriculum-split-left">
+                <p className="ov-body">{open.curriculum.intro}</p>
+                <p className="ov-body">
+                  Six levels. Sixty-plus lessons. From the basics everyone skipped to shipping
+                  your own vision with AI agents as crew. No prerequisites. No paywalls. Just start.
+                </p>
+                <div className="ov-curriculum-cta">
+                  <Link to="/open/learn" className="ov-btn ov-btn-primary">Start Learning</Link>
+                </div>
+              </div>
+              <div className="ov-curriculum-split-right">
+                {open.curriculum.levels.map((level, i) => (
+                  <div key={i} className="ov-curriculum-overview-item">
+                    <span className="ov-curriculum-overview-num">{level.number}</span>
+                    <span className="ov-curriculum-overview-title">{level.title}</span>
+                    <span className="ov-curriculum-overview-sub">{level.subtitle}</span>
+                  </div>
                 ))}
               </div>
             </div>
-          </section>
-        );
-      })()}
+          </Animate>
+        </div>
+      </section>
 
       {/* Contrast */}
       <section className="ov-section">
@@ -205,23 +179,6 @@ function OpenVectorPage() {
         </div>
       </section>
 
-      {/* Saint-Exupéry */}
-      <section className="ov-section ov-exupery">
-        <div className="ov-container">
-          <hr className="ov-rule" />
-          <Animate>
-            <blockquote className="ov-quote">{open.exupery.quote}</blockquote>
-            <cite className="ov-cite">{open.exupery.cite}</cite>
-          </Animate>
-          <Animate delay={1}>
-            <p className="ov-punch">{open.exupery.punch}</p>
-          </Animate>
-          <Animate delay={2}>
-            <p className="ov-close">{open.exupery.close}</p>
-          </Animate>
-        </div>
-      </section>
-
       {/* Investiture */}
       <section className="ov-section">
         <div className="ov-container">
@@ -241,59 +198,71 @@ function OpenVectorPage() {
         </div>
       </section>
 
-      {/* Support */}
-      <section className="ov-section ov-support-section">
+      {/* Support + CTA side by side */}
+      <section className="ov-section">
         <div className="ov-container">
           <hr className="ov-rule" />
           <Animate>
-            <div className="ov-label">Support</div>
-            <h2 className="ov-support-title">Keep the Open Vector Free</h2>
-            <p className="ov-body">
-              The Open Vector is free. Always. No paywalls, no premium tiers, no upsells.
-              But hosting, AI, and infrastructure cost real money. If this project has
-              helped you, consider chipping in to keep it going.
-            </p>
-          </Animate>
-          <Animate delay={1}>
-            <div className="ov-support-links">
-              <a
-                href="https://ko-fi.com/erikaflowers"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ov-btn ov-btn-primary"
-              >
-                Support on Ko-fi
-              </a>
-              <a
-                href="https://github.com/sponsors/erikaflowers"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ov-btn ov-btn-outline"
-              >
-                Sponsor on GitHub
-              </a>
+            <div className="ov-twin-cards">
+              <div className="ov-twin-card">
+                <div className="ov-label">Support</div>
+                <h2 className="ov-twin-card-title">Keep the Open Vector Free</h2>
+                <p className="ov-body">
+                  The Open Vector is free. Always. No paywalls, no premium tiers, no upsells.
+                  But hosting, AI, and infrastructure cost real money. If this project has
+                  helped you, consider chipping in to keep it going.
+                </p>
+                <div className="ov-twin-card-actions">
+                  <a
+                    href="https://ko-fi.com/erikaflowers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ov-btn ov-btn-primary"
+                  >
+                    Support on Ko-fi
+                  </a>
+                </div>
+              </div>
+              <div className="ov-twin-card">
+                <div className="ov-label">Contribute</div>
+                <h2 className="ov-twin-card-title">{open.cta.title}</h2>
+                <p className="ov-body">{open.cta.body}</p>
+                <div className="ov-twin-card-actions">
+                  <a href="https://github.com/erikaflowers/zerovector" className="ov-btn ov-btn-primary">{open.cta.secondaryCta}</a>
+                </div>
+              </div>
             </div>
           </Animate>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="ov-section ov-cta-section">
+      {/* Saint-Exupéry */}
+      <section className="ov-section ov-exupery">
         <div className="ov-container">
           <hr className="ov-rule" />
           <Animate>
-            <h2 className="ov-cta-title">{open.cta.title}</h2>
-            <p className="ov-body">{open.cta.body}</p>
+            <blockquote className="ov-quote">{open.exupery.quote}</blockquote>
+            <cite className="ov-cite">{open.exupery.cite}</cite>
           </Animate>
           <Animate delay={1}>
-            <div className="ov-cta-buttons">
-              <Link to="/open/learn" className="ov-btn ov-btn-primary">{open.cta.primaryCta}</Link>
-              <a href="https://github.com/erikaflowers/zerovector" className="ov-btn ov-btn-outline">{open.cta.secondaryCta}</a>
-              <Link to="/" className="ov-btn ov-btn-outline">{open.cta.backCta}</Link>
-            </div>
+            <p className="ov-punch">{open.exupery.punch}</p>
+          </Animate>
+          <Animate delay={2}>
+            <p className="ov-close">{open.exupery.close}</p>
           </Animate>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="ov-footer">
+        <div className="ov-container">
+          <div className="ov-footer-links">
+            <a href="https://zerovector.design" className="ov-footer-link">Zero Vector</a>
+            <a href="https://helloerikaflowers.com" className="ov-footer-link" target="_blank" rel="noopener noreferrer">Erika Flowers</a>
+            <a href="https://github.com/erikaflowers/zerovector" className="ov-footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

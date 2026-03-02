@@ -444,16 +444,28 @@ function ManifestoPage() {
             </Link>
           </Animate>
           <Animate delay={4}>
-            <a
-              href="https://open.substack.com/pub/eflowers/p/zero-vector-design-you-will-move"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="zv-featured-article"
-            >
-              <span className="zv-featured-article-badge">New</span>
-              <span className="zv-featured-article-title">Zero-Vector Design: You Will Move Planets</span>
-              <span className="zv-featured-article-cta">Read on Substack &rarr;</span>
-            </a>
+            <div className="zv-reading">
+              <h3 className="zv-reading-headline">{home.recommendedReading.headline}</h3>
+              <p className="zv-reading-subtitle">{home.recommendedReading.subtitle}</p>
+              <div className="zv-reading-list">
+                {home.recommendedReading.articles.map((article, i) => (
+                  <a
+                    key={i}
+                    href={article.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="zv-reading-item"
+                  >
+                    <span className="zv-reading-item-title">{article.title}</span>
+                    <span className="zv-reading-item-subtitle">{article.subtitle}</span>
+                    <span className="zv-reading-item-meta">
+                      <span className="zv-reading-item-date">{article.date}</span>
+                      <span className="zv-reading-item-cta">Read on Substack &rarr;</span>
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
           </Animate>
           <Animate delay={4}>
             <div className="zv-closing-notify">
