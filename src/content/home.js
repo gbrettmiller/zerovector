@@ -11,7 +11,7 @@ const home = {
 
   explainer: {
     headline: 'What Is Zero Vector?',
-    body: 'Zero Vector Design is a movement, an approach, and a growing network of practitioners who believe the person with the vision should build the artifact directly — using AI agents as crew. No handoff between design and engineering. No translation layer. One person, full pipeline, real product.',
+    body: 'Zero Vector Design is a movement, an approach, and a growing network of practitioners who believe the person with the vision should build the artifact directly, using AI agents as crew. No handoff between design and engineering. No translation layer. One person, full pipeline, real product.',
     audience: 'For designers who build. For leaders who ship. For anyone tired of the handoff.',
     paths: [
       { label: 'Learn the philosophy', link: '/philosophy' },
@@ -293,6 +293,13 @@ const home = {
         cta: 'Start transforming',
         link: '/for-leaders',
       },
+    },
+    openVector: {
+      badge: 'Now Live',
+      title: 'The Open Vector',
+      description: 'The full Zero-Vector curriculum. Free. Always free. Six levels, 60+ lessons, approach guides, and AI-powered learning tools.',
+      cta: 'Start Learning',
+      link: '/open/learn',
     },
     substack: {
       text: 'Stay informed. New writing on design, AI, and building things that matter.',

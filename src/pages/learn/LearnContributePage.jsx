@@ -26,7 +26,7 @@ function LearnContributePage() {
           <p className="ovl-contribute-founding-body">
             The Open Vector is in its founding phase. The curriculum is live, the platform
             is growing, and we are looking for people who want to shape what this becomes.
-            Every person who contributes now gets their name on the wall — permanently.
+            Every person who contributes now gets their name on the wall, permanently.
             Not as an afterthought. As a founder.
           </p>
           <p className="ovl-contribute-founding-body">
@@ -45,7 +45,7 @@ function LearnContributePage() {
               <h4>Content Editors</h4>
               <p>
                 Review and improve existing lessons for clarity, accuracy, and flow.
-                You read what is there and make it better — fixing explanations that
+                You read what is there and make it better, fixing explanations that
                 do not land, tightening prose, catching gaps in logic.
               </p>
             </div>
@@ -67,7 +67,7 @@ function LearnContributePage() {
               <h4>Guide Writers</h4>
               <p>
                 Create Approach guides from field experience. Practical, opinionated
-                walkthroughs of real workflows — prompting strategies, debugging patterns,
+                walkthroughs of real workflows, prompting strategies, debugging patterns,
                 project scaffolding, team coordination.
               </p>
             </div>
@@ -89,7 +89,7 @@ function LearnContributePage() {
               <h4>Accessibility Reviewers</h4>
               <p>
                 Audit the platform for accessibility. Screen reader compatibility,
-                keyboard navigation, color contrast, motion sensitivity — if you have
+                keyboard navigation, color contrast, motion sensitivity, if you have
                 expertise in a11y, the Open Vector needs your eyes.
               </p>
             </div>
@@ -151,22 +151,22 @@ function LearnContributePage() {
           <p>
             Everything you use as a technologist, designer, or creator today was
             built on a foundation of openly shared work. Linux powers most of the
-            internet. Git — the tool you use to manage every project — was built by
+            internet. Git, the tool you use to manage every project, was built by
             Linus Torvalds and given away. React, Node, VS Code, Python, PostgreSQL,
-            the entire modern web stack — open source, all of it.
+            the entire modern web stack, open source, all of it.
           </p>
           <p>
-            Richard Stallman argued decades ago that software should be free — not
+            Richard Stallman argued decades ago that software should be free, not
             free as in "no cost," but free as in freedom. The freedom to study it, modify
             it, share it. That philosophy became the Free and Open Source Software
             movement. It changed everything. Not because corporations decided to be
-            generous, but because individuals contributed what they could — a patch here,
+            generous, but because individuals contributed what they could. A patch here,
             a bug report there, documentation, testing, funding.
           </p>
           <p>
             The Open Vector exists in that tradition. This is not a product. It is a
             shared resource, built openly, improved collectively. The curriculum, the
-            guides, the tools — they belong to the community that uses them. Like the
+            guides, the tools, they belong to the community that uses them. Like the
             projects that inspired it, the Open Vector runs on contributions from the
             people it serves.
           </p>
@@ -178,8 +178,8 @@ function LearnContributePage() {
         <h2 className="ovl-contribute-heading">Contribute Code & Content</h2>
         <div className="ovl-contribute-body">
           <p>
-            The Open Vector is a GitHub project. The entire site — curriculum, approach
-            guides, resources, this page — is open source. If you see something that
+            The Open Vector is a GitHub project. The entire site, curriculum, approach
+            guides, resources, this page, is open source. If you see something that
             could be better, you can fix it yourself and submit a pull request.
           </p>
           <div className="ovl-contribute-ways">
@@ -213,7 +213,7 @@ function LearnContributePage() {
                 <p>
                   The site itself is React, Vite, and Netlify. If you are a developer
                   and you see a performance issue, an accessibility gap, or a feature
-                  that would help learners — build it. This is how open source works.
+                  that would help learners, build it. This is how open source works.
                 </p>
               </div>
             </div>
@@ -261,20 +261,19 @@ function LearnContributePage() {
             platform because it should exist.
           </p>
           <p>
-            The real costs — Supabase, Netlify, domain registration, the Claude API
-            that powers the chat — come out of my pocket. In the grand scheme of things,
+            The real costs (Supabase, Netlify, domain registration, the Claude API
+            that powers the chat) come out of my pocket. In the grand scheme of things,
             it is not a life-altering expense. But these projects can quietly run a few
-            hundred dollars a month, and I just... pay it. Along with the time, the
+            hundred dollars a month. There are no sponsors, no ads, no monetization. Along with the time, the
             stewardship, and the effort to build and maintain all of this.
           </p>
           <p>
             I am not going to pretend anyone is "buying me a coffee." But if you have
-            ever gotten something useful out of the Open Vector — a concept that clicked,
+            ever gotten something useful out of the Open Vector, a concept that clicked,
             a guide that saved you hours, a conversation with the AI tutor that pointed
-            you in the right direction — you could throw in the cost of a Taco Bell run.
-            Or a fountain Diet Pepsi at a gas station. That is genuinely what we are
+            you in the right direction, you could donate $5, $10, the amount of a lunch. That is genuinely what we are
             talking about here. A few dollars offsets the hosting. A few more covers the
-            AI. It adds up.
+            API. It adds up.
           </p>
 
           <div className="ovl-contribute-costs">
@@ -298,7 +297,7 @@ function LearnContributePage() {
           </div>
 
           <p>
-            If you can chip in, amazing. If you cannot, use the platform — that is what
+            If you can chip in, amazing. If you cannot, use the platform, that is what
             it is here for.
           </p>
 
@@ -331,7 +330,7 @@ function LearnContributePage() {
         <cite className="ovl-contribute-cite">— Linus Torvalds</cite>
         <p className="ovl-contribute-close">
           The Open Vector is yours. Use it, improve it, share it, sustain it.
-          That is how open source has always worked — and it is how we will keep
+          That is how open source has always worked, and it is how we will keep
           building, together.
         </p>
       </section>

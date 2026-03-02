@@ -876,6 +876,68 @@ a:hover {
 }
 
 /* --- Featured Article Banner (homepage) --- */
+/* Open Vector launch card — homepage */
+.zv-open-vector-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 28px;
+  margin-top: 32px;
+  border: 1px solid #00ff88;
+  background: #0a1a10;
+  text-decoration: none;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.zv-open-vector-card:hover {
+  border-color: #33ffaa;
+  background: #0d2015;
+  box-shadow: 0 2px 20px rgba(0, 255, 136, 0.15);
+}
+
+.zv-open-vector-card-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  background: #00ff88;
+  padding: 3px 10px;
+  align-self: flex-start;
+}
+
+.zv-open-vector-card-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.zv-open-vector-card-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+.zv-open-vector-card-cta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #00ff88;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .zv-open-vector-card {
+    padding: 20px 24px;
+  }
+}
+
 .zv-featured-article {
   display: flex;
   align-items: center;
@@ -4938,6 +5000,10 @@ a:hover {
   gap: 20px;
 }
 
+.ov-launch-banner--live {
+  background: #0a0a0a;
+}
+
 /* Blueprint grid overlay */
 .ov-launch-banner::before {
   content: '';
@@ -4981,6 +5047,17 @@ a:hover {
   animation: ov-beacon 2s ease-in-out infinite;
 }
 
+.ov-launch-beacon--live {
+  background: #00ff88;
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.5);
+  animation: ov-beacon-live 2s ease-in-out infinite;
+}
+
+@keyframes ov-beacon-live {
+  0%, 100% { opacity: 0.7; box-shadow: 0 0 8px rgba(0, 255, 136, 0.3); }
+  50% { opacity: 1; box-shadow: 0 0 16px rgba(0, 255, 136, 0.6); }
+}
+
 @keyframes ov-beacon {
   0%, 100% { opacity: 0.6; box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
   50% { opacity: 1; box-shadow: 0 0 16px rgba(255, 255, 255, 0.6); }
@@ -5008,27 +5085,26 @@ a:hover {
   color: #fff;
 }
 
-.ov-launch-notify {
+.ov-launch-cta {
   margin-top: 16px;
   position: relative;
   z-index: 1;
 }
 
-/* OV-specific overrides — blue bg, white input outline matches page accent */
-.ov-launch-notify .zv-notify--dark .zv-notify-input {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.25);
-}
-
-.ov-launch-notify .zv-notify--dark .zv-notify-btn {
-  background: #fff;
-  color: #0055ff;
+.ov-launch-cta .ov-btn-primary {
+  background: #00ff88;
+  color: #0a0a0a;
   font-weight: 700;
+  padding: 10px 24px;
+  border: none;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.ov-launch-notify .zv-notify--dark .zv-notify-btn:hover {
-  background: #e8eeff;
-  box-shadow: 0 2px 16px rgba(255, 255, 255, 0.2);
+.ov-launch-cta .ov-btn-primary:hover {
+  background: #33ffaa;
+  box-shadow: 0 2px 16px rgba(0, 255, 136, 0.3);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5201,6 +5277,10 @@ a:hover {
   color: #999;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.ov-level-status--available {
+  color: #00a86b;
 }
 
 .ov-level-right {
@@ -12340,4 +12420,126 @@ a:hover {
   font-size: 13px;
   color: var(--ovl-text-muted, rgba(255, 255, 255, 0.5));
   margin-bottom: 8px;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Welcome Modal — first-time user onboarding
+   ──────────────────────────────────────────────────────────────── */
+
+.ovl-welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: ovl-welcome-fade-in 0.3s ease;
+}
+
+@keyframes ovl-welcome-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.ovl-welcome-card {
+  background: #111;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  max-width: 480px;
+  width: 100%;
+  padding: 32px;
+  animation: ovl-welcome-slide-up 0.3s ease;
+}
+
+@keyframes ovl-welcome-slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ovl-welcome-header {
+  margin-bottom: 24px;
+}
+
+.ovl-welcome-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  background: #00ff88;
+  padding: 3px 10px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.ovl-welcome-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px 0;
+}
+
+.ovl-welcome-desc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ovl-welcome-paths {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.ovl-welcome-path {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.ovl-welcome-path:hover {
+  border-color: rgba(0, 255, 136, 0.4);
+  background: rgba(0, 255, 136, 0.06);
+}
+
+.ovl-welcome-path-label {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.ovl-welcome-path-desc {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.05em;
+}
+
+.ovl-welcome-dismiss {
+  display: block;
+  width: 100%;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  padding: 10px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.ovl-welcome-dismiss:hover {
+  color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.3);
 }

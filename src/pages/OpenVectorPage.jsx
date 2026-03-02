@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import NotifyForm from '../components/NotifyForm';
 import Animate from '../components/Animate';
 import useSEO from '../hooks/useSEO';
 import '../styles/site.css';
@@ -17,7 +16,7 @@ function OpenVectorPage() {
 
   useSEO({
     title: 'The Open Vector',
-    description: 'A free, open curriculum for learning to build with AI. Five levels from apprentice to auteur. Launching March 2nd. Sign up to get notified.',
+    description: 'A free, open curriculum for learning to build with AI. Six levels from orientation to auteur. Start now.',
     path: '/open',
     ogImage: 'https://zerovector.design/og/open-vector.png',
   });
@@ -57,13 +56,13 @@ function OpenVectorPage() {
             <span className="ov-hero-heavy">{open.hero.title[1]}</span>
             <span className="ov-hero-heavy">{open.hero.title[2]}</span>
           </h1>
-          <div className="ov-launch-banner">
-            <div className="ov-launch-beacon" aria-hidden="true" />
+          <div className="ov-launch-banner ov-launch-banner--live">
+            <div className="ov-launch-beacon ov-launch-beacon--live" aria-hidden="true" />
             <div className="ov-launch-content">
-              <div className="ov-launch-label">Coming Soon</div>
-              <div className="ov-launch-date">The Open Vector launches March 2nd</div>
-              <div className="ov-launch-notify">
-                <NotifyForm variant="dark" tag="zerovector" />
+              <div className="ov-launch-label">Now Live</div>
+              <div className="ov-launch-date">The Open Vector is here. Free. Always free.</div>
+              <div className="ov-launch-cta">
+                <Link to="/open/learn" className="ov-btn ov-btn-primary">Start Learning</Link>
               </div>
             </div>
           </div>
@@ -119,7 +118,9 @@ function OpenVectorPage() {
                   <Link to={levelPath} className="ov-level">
                     <div className="ov-level-left">
                       <div className="ov-level-number">{level.number}</div>
-                      <div className="ov-level-status">Coming soon</div>
+                      <div className={`ov-level-status ${level.status === 'available' ? 'ov-level-status--available' : ''}`}>
+                        {level.status === 'available' ? 'Available' : 'Coming soon'}
+                      </div>
                     </div>
                     <div className="ov-level-right">
                       <h3 className="ov-level-title">{level.title}</h3>

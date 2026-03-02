@@ -5,6 +5,7 @@ import LearnSidebar from '../components/learn/LearnSidebar';
 import LearnBreadcrumbs from '../components/learn/LearnBreadcrumbs';
 import LearnPagination from '../components/learn/LearnPagination';
 import ErrorBoundary from '../components/ErrorBoundary';
+import WelcomeModal from '../components/WelcomeModal';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import '../styles/site.css';
 import en from '../content/en';
@@ -85,6 +86,7 @@ function LearnLayout() {
 
   return (
     <ThemeProvider>
+    <WelcomeModal />
     <div className="ovl-page">
       <LearnNav
         sidebarOpen={sidebarOpen}
